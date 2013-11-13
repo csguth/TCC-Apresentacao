@@ -75,16 +75,34 @@
 
 		\subsection*{Portas Lógicas}
 			\begin{frame}
-				\includegraphics[width=\textwidth]{img/circuito_portas.pdf} 
+				\begin{center}
+					\includegraphics[width=\textwidth]{img/circuito_portas.pdf} 
+				\end{center}
 			\end{frame}
 			
 			\begin{frame}
 				\frametitle{Características Temporais}
-				\includegraphics[width=0.8 \textwidth]{img/caracteristicas_temporais_portas_logicas.pdf} 
+				\begin{center}
+					\includegraphics[width=0.3 \textwidth]{img/carac_portas_1.pdf} \\ \pause
+					\includegraphics[width=0.8 \textwidth]{img/carac_portas_2.pdf} \\ \vspace{.5cm} \pause
+					\includegraphics[width=0.8 \textwidth]{img/carac_portas_3.pdf}  
+				\end{center}
+				
 			\end{frame}
 			
 			\begin{frame}
 				\frametitle{Modelo de Atraso Não-Linear}
+					\begin{center}
+						\includegraphics[width=0.7\textwidth]{img/nldm_1.pdf}
+					\end{center} \pause
+					
+					\begin{itemize}
+						\item Output Delay: $f(slew, load) = 52.05ps $	\\
+						\begin{center}
+							\includegraphics[width=0.4 \linewidth]{img/nldm_2.pdf} 
+						\end{center}
+					\end{itemize}					
+						
 			\end{frame}
 		
 		\subsection*{Interconexões}
@@ -97,31 +115,44 @@
 			\subsubsection*{Modelos de Interconexões}
 				\begin{frame}
 					\frametitle{Modelo RC Distribuído}
-					\includegraphics[width=\textwidth]{img/distributed_rc.pdf} 
+					\begin{center}
+						\includegraphics[width=\textwidth]{img/distributed_rc.pdf} 
+					\end{center}
 				\end{frame}
 				
 				\begin{frame}
 					\frametitle{Modelo de Capacitância Concetrada}
-					\includegraphics[width=\textwidth]{img/lumped_c.pdf} 
+					\begin{center}
+						\includegraphics[width=\textwidth]{img/lumped_c.pdf} 
+					\end{center}				
 				\end{frame}
 				
 				\begin{frame}
 					\frametitle{Modelo de RC Concentrado}
-					\includegraphics[width=\textwidth]{img/lumped_rc.pdf} 
+					\begin{center}
+						\includegraphics[width=\textwidth]{img/lumped_rc.pdf} 
+					\end{center}				
 				\end{frame}
 			
 			\subsubsection*{Características Temporais}
 			\begin{frame}
 				\frametitle{Características Temporais}
+				
+				\begin{itemize}
+					\item Capacitância ``Vista'' Pelo \textit{Driver}; \pause
+					\item Atraso de Propagação; \pause
+					\item Degradação do \textit{Slew}. 
+					
+				\end{itemize}
 			\end{frame}
 	
-	\section{Revisão Bibliográfica}
+	\section{Trabalhos Correlatos}
 	
 		\begin{frame}
 		revs~ao
 		\end{frame}
 	
-	\section{Técnica}
+	\section{Técnica Implementada}
 	
 		\begin{frame}
 		tecnica
