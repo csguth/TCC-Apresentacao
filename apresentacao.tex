@@ -41,28 +41,71 @@
 		
 		\subsection*{}
 			\begin{frame}
-				\frametitle{Fluxo \textit{Standard Cell}}
-				olá
+				\frametitle{Motivação}
+				\includegraphics[width=\textwidth]{img/pmd_stdcell.pdf} 
+				\begin{itemize}
+					\item Necessidade de um \textit{time-to-market} curto;
+					\item Adoção do fluxo \textit{standard cell}.
+				\end{itemize}
 			\end{frame}
 		
 			\begin{frame}
-				\frametitle{Motivação}
-				olá
+				\frametitle{Motivação: Fluxo \textit{Standard Cell}}
+				\begin{minipage}{0.5 \textwidth}
+					\includegraphics[width=\textwidth]{img/fluxo_standard_cell.pdf}
+				\end{minipage}
+				\begin{minipage}{0.4 \textwidth}
+					\begin{itemize}
+						\item Diversas otimizações:
+							\begin{itemize}
+								\item Área;
+								\item Potência;
+								\item Atraso Máximo.
+								
+							\end{itemize}
+						\item Avaliação das informações temporais nas mais diversas etapas do fluxo.
+					\end{itemize}
+				\end{minipage}
+				
 			\end{frame}
 		
 			\begin{frame}
 				\frametitle{Justificativa}
-				olá
+				\begin{itemize}
+					\item Inexistência de ferramentas de STA em domínio público;
+					\item Alto custo das licenças das ferramentas industriais.
+				\end{itemize}
 			\end{frame}
 		
 			\begin{frame}
 				\frametitle{Objetivos}
-				olá
+				\begin{itemize}
+					\item Projeto, avaliação, validação e documentação de uma ferramenta de STA voltada para o fluxo \textit{standard cell.}
+					\begin{enumerate}
+						\item Modelo de interconexão de capacitância concentrada; \label{obj:1}
+						\item Técnica de Elmore para cálculo dos atrasos das interconexões; \label{obj:2}
+						\item Técnica para o cálculo do atraso das interconexões utilizando a abordagem de capacitância efetiva; \label{obj:3}
+						\item Construção de uma ferramenta de STA que implementa \ref{obj:1}, \ref{obj:2} e \ref{obj:3}. 
+					\end{enumerate}
+				\end{itemize}
 			\end{frame}
 			
 			\begin{frame}
 				\frametitle{Escopo}
-				olá
+				\begin{itemize}
+					\item Modelos de atraso adotados em fluxo \textit{standard cell};
+					\item 2 modelos de interconexão:
+						\begin{enumerate}
+							\item Modelo de Capacitância Concentrada
+							\item Modelo RC Concentrado
+						\end{enumerate}
+					\item \textbf{NÃO} faz parte do escopo:
+					\begin{itemize}
+						\item Tempos de \textit{setup} e \textit{hold} das células sequenciais;
+					\end{itemize}
+				\end{itemize}
+				
+				
 			\end{frame}
 		
 	
@@ -82,11 +125,15 @@
 			
 			\begin{frame}
 				\frametitle{Características Temporais}
-				\begin{center}
-					\includegraphics[width=0.3 \textwidth]{img/carac_portas_1.pdf} \\ \pause
-					\includegraphics[width=0.8 \textwidth]{img/carac_portas_2.pdf} \\ \vspace{.5cm} \pause
-					\includegraphics[width=0.8 \textwidth]{img/carac_portas_3.pdf}  
-				\end{center}
+				\begin{itemize}
+					\item \textit{Timing Arc} e \textit{Driver} \\		
+						\includegraphics[width=0.3 \textwidth]{img/carac_portas_1.pdf}
+					\item \textit{Delay} \\ 
+						\includegraphics[width=0.7 \textwidth]{img/carac_portas_2.pdf}
+					\item \textit{Slew} \\
+						\includegraphics[width=0.7 \textwidth]{img/carac_portas_3.pdf}  
+				\end{itemize}
+
 				
 			\end{frame}
 			
@@ -94,10 +141,10 @@
 				\frametitle{Modelo de Atraso Não-Linear}
 					\begin{center}
 						\includegraphics[width=0.7\textwidth]{img/nldm_1.pdf}
-					\end{center} \pause
+					\end{center}
 					
 					\begin{itemize}
-						\item Output Delay: $f(slew, load) = 52.05ps $	\\
+						\item \textit{Delay}: $f(slew, load) = 52.05ps $	\\
 						\begin{center}
 							\includegraphics[width=0.4 \linewidth]{img/nldm_2.pdf} 
 						\end{center}
@@ -118,20 +165,36 @@
 					\begin{center}
 						\includegraphics[width=\textwidth]{img/distributed_rc.pdf} 
 					\end{center}
+					\begin{itemize}
+						\item Cálculo do atraso reflete na solução de equações diferenciais;
+						\item Não possui fórmula fechada;
+						\item Modelos de interconexão simplificados são mais adotados em fluxo \textit{standard cell}.
+					\end{itemize}
 				\end{frame}
 				
 				\begin{frame}
 					\frametitle{Modelo de Capacitância Concetrada}
 					\begin{center}
 						\includegraphics[width=\textwidth]{img/lumped_c.pdf} 
-					\end{center}				
+					\end{center}
+					\begin{itemize}
+						\item Modelo utilizado quando a resistência da interconexão é despresível;
+						\item Concentra-se toda a capacitância da interconexão em um único capacitor;
+						\item Seu atraso é desconsiderado.
+					\end{itemize}							
 				\end{frame}
 				
 				\begin{frame}
 					\frametitle{Modelo de RC Concentrado}
 					\begin{center}
 						\includegraphics[width=\textwidth]{img/lumped_rc.pdf} 
-					\end{center}				
+					\end{center}
+					\begin{itemize}
+						\item Modelo amplamente adotado em fluxo \textit{standard cell};
+						\item Concentra-se toda a resistência de cada segmento  em um único resistor R;
+						\item Combina-se a capacitância total em um único capacitor C;
+						\item Árvore RC.
+					\end{itemize}								
 				\end{frame}
 			
 			\subsubsection*{Características Temporais}
@@ -139,8 +202,8 @@
 				\frametitle{Características Temporais}
 				
 				\begin{itemize}
-					\item Capacitância ``Vista'' Pelo \textit{Driver}; \pause
-					\item Atraso de Propagação; \pause
+					\item Capacitância ``Vista'' Pelo \textit{Driver};
+					\item Atraso de Propagação;
 					\item Degradação do \textit{Slew}. 
 					
 				\end{itemize}
@@ -155,7 +218,20 @@
 	\section{Técnica Implementada}
 	
 		\begin{frame}
-		tecnica
+			\includegraphics[width=\textwidth]{img/imagem_puri.pdf} 
+		\end{frame}
+		
+		\begin{frame}
+			\begin{minipage}{0.45\textwidth}
+				IMAGEM MODELO PI
+			\end{minipage}
+			\begin{minipage}{0.45\textwidth}
+				\begin{itemize}
+					\item \textbf{Capacitância efetiva:} FoRMULA
+					\item \textbf{Atraso da interconexão:} Técnica de Elmore
+					\item \textbf{Degradação do \textit{slew}: } FORMULA
+				\end{itemize}
+			\end{minipage}
 		\end{frame}
 	
 	\section{Análise de Timing Estática}
