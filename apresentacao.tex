@@ -10,7 +10,7 @@
 \usepackage{inputenc}
 \usepackage[lined,boxed,ruled,commentsnumbered]{algorithm2e}
 \usepackage{pgfbaseimage}
-
+\usepackage{subfigure}
 
 
 \title % (optional, only for long titles)
@@ -193,6 +193,8 @@
 						\item Não possui fórmula fechada;
 						\item Modelos de interconexão simplificados são mais adotados em fluxo \textit{standard cell}.
 					\end{itemize}
+					
+					
 				\end{frame}
 				
 				\begin{frame}
@@ -224,18 +226,36 @@
 			\begin{frame}
 				\frametitle{Características Temporais}
 				
-				\begin{itemize}
-					\item Capacitância ``Vista'' Pelo \textit{Driver};
-					\item Atraso de Propagação;
-					\item Degradação do \textit{Slew}. 
+				
+					\begin{figure}
+						\subfigure[]
+						{
+						\includegraphics[width=0.4 \textwidth]{img/modelagem1.pdf}
+						}
+						\subfigure[]
+						{
+						\includegraphics[width=0.4 \textwidth]{img/modelagem2.pdf}
+						}
+						
+					\end{figure}
 					
-				\end{itemize}
+					\begin{itemize}
+						\item Capacitância ``Vista'' Pelo \textit{Driver};
+						\item Atraso da Interconexão;
+						\item Degradação do \textit{Slew}. 		
+					\end{itemize}
 			\end{frame}
 	
 	\section{Trabalhos Correlatos}
 	
 		\begin{frame}
-		revs~ao
+		\frametitle{Trabalhos Correlatos}
+			\begin{itemize}
+				\item<1> AWE
+				\item<1> PRIMA
+				\item<1> Kashiyap
+				\item<1> Puri
+			\end{itemize}
 		\end{frame}
 	
 	\section{Técnica Implementada}
