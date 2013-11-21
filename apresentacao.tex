@@ -13,6 +13,15 @@
 \usepackage{subfigure}
 
 
+\definecolor{azul}{rgb}{0.03,0.46,0.69}
+\definecolor{verde}{rgb}{0,1,0}
+
+
+
+%\everymath{\bf \color{azul}}
+%\everydisplay{\bf \color{azul}}
+%\setbeamercovered{transparent}
+
 \title % (optional, only for long titles)
 {Análise de \textit{Timing} Estática e a Avaliação do Impacto do Atraso das Interconexões em Circuitos Digitais}
 \author % (optional, for multiple authors)
@@ -78,7 +87,8 @@
 					\includegraphics[width=\textwidth]{img/fluxo_standard_cell.pdf}
 				\end{minipage}
 				\begin{minipage}{0.4 \textwidth}
-					\begin{itemize}
+					\begin{itemize}[<+->]
+						\pause
 						\item Diversas otimizações:
 							\begin{itemize}
 								\item Área;
@@ -94,7 +104,8 @@
 		
 			\begin{frame}
 				\frametitle{Justificativa}
-				\begin{itemize}
+				\pause
+				\begin{itemize}[<+->]
 					\item Inexistência de ferramentas de STA em domínio público;
 					\item Alto custo das licenças das ferramentas industriais.
 				\end{itemize}
@@ -102,7 +113,8 @@
 		
 			\begin{frame}
 				\frametitle{Objetivos}
-				\begin{itemize}
+				\pause
+				\begin{itemize}[<+->]
 					\item Projeto, avaliação, validação e documentação de uma ferramenta de STA voltada para o fluxo \textit{standard cell.}
 					\begin{enumerate}
 						\item Modelo de interconexão de capacitância concentrada; \label{obj:1}
@@ -115,7 +127,8 @@
 			
 			\begin{frame}
 				\frametitle{Escopo}
-				\begin{itemize}
+				\pause
+				\begin{itemize}[<+->]
 					\item Modelos de atraso adotados em fluxo \textit{standard cell};
 					\item 2 modelos de interconexão:
 						\begin{enumerate}
@@ -148,24 +161,25 @@
 			
 			\begin{frame}
 				\frametitle{Características Temporais}
-				\begin{itemize}
-					\item \textit{Timing Arc} e \textit{Driver} \\		
+				\begin{itemize}[<+->]
+					\item \textit{Timing Arc} e \textit{Driver} \\
 						\includegraphics[width=0.3 \textwidth]{img/carac_portas_1.pdf}
-					\item \textit{Delay} \\ 
+					\item \textit{Delay} \\
 						\includegraphics[width=0.7 \textwidth]{img/carac_portas_2.pdf}
 					\item \textit{Slew} \\
-						\includegraphics[width=0.7 \textwidth]{img/carac_portas_3.pdf}  
+						\includegraphics[width=0.7 \textwidth]{img/carac_portas_3.pdf}
 				\end{itemize}
 
 				
 			\end{frame}
+
 			
 			\begin{frame}
 				\frametitle{Modelo de Atraso Não-Linear}
 					\begin{center}
 						\includegraphics[width=0.7\textwidth]{img/nldm_1.pdf}
 					\end{center}
-					
+					 \pause
 					\begin{itemize}
 						\item \textit{Delay}: $f(slew, load) = 52.05ps $	\\
 						\begin{center}
@@ -188,7 +202,8 @@
 					\begin{center}
 						\includegraphics[width=\textwidth]{img/distributed_rc.pdf} 
 					\end{center}
-					\begin{itemize}
+					\pause
+					\begin{itemize}[<+->]
 						\item Cálculo do atraso reflete na solução de equações diferenciais;
 						\item Não possui fórmula fechada;
 						\item Modelos de interconexão simplificados são mais adotados em fluxo \textit{standard cell}.
@@ -202,7 +217,8 @@
 					\begin{center}
 						\includegraphics[width=\textwidth]{img/lumped_c.pdf} 
 					\end{center}
-					\begin{itemize}
+					\pause
+					\begin{itemize}[<+->]
 						\item Modelo utilizado quando a resistência da interconexão é despresível;
 						\item Concentra-se toda a capacitância da interconexão em um único capacitor;
 						\item Seu atraso é desconsiderado.
@@ -214,7 +230,8 @@
 					\begin{center}
 						\includegraphics[width=\textwidth]{img/lumped_rc.pdf} 
 					\end{center}
-					\begin{itemize}
+					\pause
+					\begin{itemize}[<+->]
 						\item Modelo amplamente adotado em fluxo \textit{standard cell};
 						\item Concentra-se toda a resistência de cada segmento  em um único resistor R;
 						\item Combina-se a capacitância total em um único capacitor C;
@@ -228,18 +245,18 @@
 				
 				
 					\begin{figure}
-						\subfigure[]
+						\subfigure
 						{
 						\includegraphics[width=0.4 \textwidth]{img/modelagem1.pdf}
 						}
-						\subfigure[]
+						\subfigure
 						{
 						\includegraphics[width=0.4 \textwidth]{img/modelagem2.pdf}
 						}
 						
 					\end{figure}
-					
-					\begin{itemize}
+					\pause
+					\begin{itemize}[<+->]
 						\item Capacitância ``Vista'' Pelo \textit{Driver};
 						\item Atraso da Interconexão;
 						\item Degradação do \textit{Slew}. 		
@@ -248,19 +265,36 @@
 	
 	\section{Trabalhos Correlatos}
 	
-		\begin{frame}
+		\begin{frame}[t]
 		\frametitle{Trabalhos Correlatos}
-			\begin{itemize}
-				\item<1> AWE
-				\item<1> PRIMA
-				\item<1> Kashiyap
-				\item<1> Puri
-			\end{itemize}
+			\pgfdeclareimage[width=0.8\linewidth]{correlatos1}{img/correlatos1.pdf}
+			\pgfdeclareimage[width=0.8\linewidth]{correlatos2}{img/correlatos2.pdf}
+			\pgfdeclareimage[width=0.8\linewidth]{correlatos31}{img/correlatos31.pdf}
+			\pgfdeclareimage[width=0.8\linewidth]{correlatos3}{img/correlatos3.pdf}
+			\pgfdeclareimage[width=0.8\linewidth]{correlatos41}{img/correlatos41.pdf}
+			\pgfdeclareimage[width=0.8\linewidth]{correlatos4}{img/correlatos4.pdf}
+			\pgfdeclareimage[width=0.8\linewidth]{correlatos51}{img/correlatos51.pdf}
+			\pgfdeclareimage[width=0.8\linewidth]{correlatos5}{img/correlatos5.pdf}
+
+
+			\begin{center}
+				\pgfuseimage{correlatos1}<1>
+				\pgfuseimage{correlatos2}<2>
+				\pgfuseimage{correlatos31}<3>
+				\pgfuseimage{correlatos3}<4>
+				\pgfuseimage{correlatos41}<5>
+				\pgfuseimage{correlatos4}<6>
+				\pgfuseimage{correlatos51}<7>
+				\pgfuseimage{correlatos5}<8>
+			\end{center}
+			
 		\end{frame}
 	
 	\section{Técnica Implementada}
 	
+		\subsection*{Visão Geral}
 		\begin{frame}
+			\frametitle{Técnica Implementada}
 			\includegraphics[width=\textwidth]{img/imagem_puri.pdf} 
 		\end{frame}
 		
@@ -270,17 +304,90 @@
 
 			\end{minipage}
 			\begin{minipage}{0.5\textwidth}
-				\begin{itemize}
-					\item<1-3> \textbf{Capacitância efetiva:}\\
-						$C_{eff_0} = C_0 + C_1 \times K$ 
-						$K = 1 - 2x(1 - e^{-\frac{1}{2x}})$
-						$x = \frac{R_1C_1}{slew_1}$
-					\item<2-3> \textbf{Atraso da interconexão:} \\
-						$\tau_1 = \tau_0 + R_1 \times C_1$
-					\item<3> \textbf{Degradação do \textit{slew}: }
-						$slew_1 = \frac{slew_0}{1 - \frac{R_1 C_1}{slew_0} (1 - e^{-\frac{slew_0}{R_1 C_1}})}$
-				\end{itemize}
-			\end{minipage}
+				
+				\pause
+				\begin{enumerate}[<+->]
+					\item \textbf{Inicialização: } \\
+						\begin{itemize}
+							\item $C_{eff_1} = C_1$
+							\item $C_{eff_0} = C_0 + C_{eff_1}$
+						\end{itemize}
+					\item \textbf{Ordem Topológica:} \label{passo:traversal}
+						\begin{itemize}
+							\item \textbf{Atraso da interconexão:} \\
+								$\tau_1 = \tau_0 + R_1 \times C_{eff_1}$
+							\item \textbf{Degradação do \textit{slew}: }
+								$slew_1 = \frac{slew_0}{1 - \frac{R_1 C_{eff_1}}{slew_0} (1 - e^{-\frac{slew_0}{R_1 C_{eff_1}}})}$
+						\end{itemize}
+					\item \textbf{Ordem Topológica Reversa:} \label{passo:rev_traversal}
+						\begin{itemize}
+							\item \textbf{Capacitância efetiva:}\\
+								$C_{eff_0} = C_0 + C_{eff_1} \times K$ 
+								$K = 1 - 2x(1 - e^{-\frac{1}{2x}})$
+								$x = \frac{R_1C_{eff_1}}{slew_1}$
+						\end{itemize}
+					\item \textbf{Convergência:} Os passos \textcolor{azul}{\ref{passo:traversal}} e \textcolor{azul}{\ref{passo:rev_traversal}} são repetidos até que $slew_0$ convirja em uma precisão $\varepsilon$.
+				\end{enumerate}
+			\end{minipage}		
+		\end{frame}
+
+		\subsection*{Atualização da Capacitância Efetiva}
+		\begin{frame}[t]
+			\frametitle{Atualização da Capacitância Efetiva}
+%			\begin{minipage}{\linewidth}
+				\pgfdeclareimage[width=\linewidth]{inicializacao1}{img/inicializacao1.pdf}
+				\pgfdeclareimage[width=\linewidth]{inicializacao2}{img/inicializacao2.pdf}
+				\pgfdeclareimage[width=\linewidth]{inicializacao3}{img/inicializacao3.pdf}
+				\pgfdeclareimage[width=\linewidth]{inicializacao4}{img/inicializacao4.pdf}
+				\pgfdeclareimage[width=\linewidth]{inicializacao5}{img/inicializacao5.pdf}
+				\pgfdeclareimage[width=\linewidth]{inicializacao6}{img/inicializacao6.pdf}
+				\pgfdeclareimage[width=\linewidth]{inicializacao7}{img/inicializacao7.pdf}
+
+
+				\pgfuseimage{inicializacao1}<1>
+				\pgfuseimage{inicializacao2}<2>
+				\pgfuseimage{inicializacao3}<3>
+				\pgfuseimage{inicializacao4}<4>
+				\pgfuseimage{inicializacao5}<5>
+				\pgfuseimage{inicializacao6}<6>
+				\pgfuseimage{inicializacao7}<7>
+				\pgfuseimage{inicializacao1}<8>
+				
+%			\end{minipage}
+			\only<2>{
+				\textbf{C_{eff_7}} = \textcolor{verde}{C_7}\\
+				\textbf{C_{eff_6}} = \textcolor{verde}{C_6}\\
+				\textbf{C_{eff_5}} = \textcolor{verde}{C_5}
+			}
+					
+			\only<3-4>{
+				\textbf{C_{eff_4}} = \textcolor{verde}{C_4}
+				\only<4>{
+					\textcolor{azul}{+ C_{eff_7} \times K_7}
+				}
+			}
+			\only<5-6>{
+				\textbf{C_{eff_3}} = \textcolor{verde}{C_3}
+				\only<6>{
+					\textcolor{azul}{+ C_{eff_5} \times K_5 + C_{eff_6} \times K_6}
+				}
+			}
+			\only<7>{
+%				\textbf{C_{eff_2}} = C_2 + C_{eff_4} \times K_4\\
+%				\textbf{C_{eff_1}} = C_1 + C_{eff_2} \times K_2 + C_{eff_3} \times K_3\\
+				\textbf{...} \\
+				\textbf{C_{eff_0}} = \textcolor{verde}{C_0} \textcolor{azul}{+ C_{eff_1} \times K_1}
+			}
+			
+			\only<8>
+			{
+				\\\ 
+				\\\ 
+				\textbf{No passo de inicialização:} \\
+				K_i = 1\ \forall\ i < N \\
+				Ou seja, C_{eff_i} = C_{total_i}
+			}
+							
 		\end{frame}
 	
 	\section{Análise de Timing Estática}
