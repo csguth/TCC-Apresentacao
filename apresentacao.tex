@@ -15,6 +15,8 @@
 
 \definecolor{azul}{rgb}{0.03,0.46,0.69}
 \definecolor{verde}{rgb}{0,1,0}
+\definecolor{vermelho}{rgb}{0.56,0.05,0.09}
+
 
 
 
@@ -87,8 +89,7 @@
 					\includegraphics[width=\textwidth]{img/fluxo_standard_cell.pdf}
 				\end{minipage}
 				\begin{minipage}{0.4 \textwidth}
-					\begin{itemize}[<+->]
-						\pause
+					\begin{itemize}
 						\item Diversas otimizações:
 							\begin{itemize}
 								\item Área;
@@ -104,8 +105,7 @@
 		
 			\begin{frame}
 				\frametitle{Justificativa}
-				\pause
-				\begin{itemize}[<+->]
+				\begin{itemize}
 					\item Inexistência de ferramentas de STA em domínio público;
 					\item Alto custo das licenças das ferramentas industriais.
 				\end{itemize}
@@ -113,8 +113,7 @@
 		
 			\begin{frame}
 				\frametitle{Objetivos}
-				\pause
-				\begin{itemize}[<+->]
+				\begin{itemize}
 					\item Projeto, avaliação, validação e documentação de uma ferramenta de STA voltada para o fluxo \textit{standard cell.}
 					\begin{enumerate}
 						\item Modelo de interconexão de capacitância concentrada; \label{obj:1}
@@ -127,8 +126,7 @@
 			
 			\begin{frame}
 				\frametitle{Escopo}
-				\pause
-				\begin{itemize}[<+->]
+				\begin{itemize}
 					\item Modelos de atraso adotados em fluxo \textit{standard cell};
 					\item 2 modelos de interconexão:
 						\begin{enumerate}
@@ -179,7 +177,6 @@
 					\begin{center}
 						\includegraphics[width=0.7\textwidth]{img/nldm_1.pdf}
 					\end{center}
-					 \pause
 					\begin{itemize}
 						\item \textit{Delay}: $f(slew, load) = 52.05ps $	\\
 						\begin{center}
@@ -202,8 +199,7 @@
 					\begin{center}
 						\includegraphics[width=\textwidth]{img/distributed_rc.pdf} 
 					\end{center}
-					\pause
-					\begin{itemize}[<+->]
+					\begin{itemize}
 						\item Cálculo do atraso reflete na solução de equações diferenciais;
 						\item Não possui fórmula fechada;
 						\item Modelos de interconexão simplificados são mais adotados em fluxo \textit{standard cell}.
@@ -217,8 +213,7 @@
 					\begin{center}
 						\includegraphics[width=\textwidth]{img/lumped_c.pdf} 
 					\end{center}
-					\pause
-					\begin{itemize}[<+->]
+					\begin{itemize}
 						\item Modelo utilizado quando a resistência da interconexão é despresível;
 						\item Concentra-se toda a capacitância da interconexão em um único capacitor;
 						\item Seu atraso é desconsiderado.
@@ -230,8 +225,7 @@
 					\begin{center}
 						\includegraphics[width=\textwidth]{img/lumped_rc.pdf} 
 					\end{center}
-					\pause
-					\begin{itemize}[<+->]
+					\begin{itemize}
 						\item Modelo amplamente adotado em fluxo \textit{standard cell};
 						\item Concentra-se toda a resistência de cada segmento  em um único resistor R;
 						\item Combina-se a capacitância total em um único capacitor C;
@@ -255,8 +249,7 @@
 						}
 						
 					\end{figure}
-					\pause
-					\begin{itemize}[<+->]
+					\begin{itemize}
 						\item Capacitância ``Vista'' Pelo \textit{Driver};
 						\item Atraso da Interconexão;
 						\item Degradação do \textit{Slew}. 		
@@ -264,7 +257,7 @@
 			\end{frame}
 	
 	\section{Trabalhos Correlatos}
-	
+		\subsection*{}
 		\begin{frame}[t]
 		\frametitle{Trabalhos Correlatos}
 			\pgfdeclareimage[width=0.8\linewidth]{correlatos1}{img/correlatos1.pdf}
@@ -298,102 +291,191 @@
 			\includegraphics[width=\textwidth]{img/imagem_puri.pdf} 
 		\end{frame}
 		
-		\begin{frame}
-			\begin{minipage}{0.4\textwidth}
-				\includegraphics[width=\textwidth]{img/pi.pdf} 
-
-			\end{minipage}
-			\begin{minipage}{0.5\textwidth}
-				
-				\pause
-				\begin{enumerate}[<+->]
-					\item \textbf{Inicialização: } \\
-						\begin{itemize}
-							\item $C_{eff_1} = C_1$
-							\item $C_{eff_0} = C_0 + C_{eff_1}$
-						\end{itemize}
-					\item \textbf{Ordem Topológica:} \label{passo:traversal}
-						\begin{itemize}
-							\item \textbf{Atraso da interconexão:} \\
-								$\tau_1 = \tau_0 + R_1 \times C_{eff_1}$
-							\item \textbf{Degradação do \textit{slew}: }
-								$slew_1 = \frac{slew_0}{1 - \frac{R_1 C_{eff_1}}{slew_0} (1 - e^{-\frac{slew_0}{R_1 C_{eff_1}}})}$
-						\end{itemize}
-					\item \textbf{Ordem Topológica Reversa:} \label{passo:rev_traversal}
-						\begin{itemize}
-							\item \textbf{Capacitância efetiva:}\\
-								$C_{eff_0} = C_0 + C_{eff_1} \times K$ 
-								$K = 1 - 2x(1 - e^{-\frac{1}{2x}})$
-								$x = \frac{R_1C_{eff_1}}{slew_1}$
-						\end{itemize}
-					\item \textbf{Convergência:} Os passos \textcolor{azul}{\ref{passo:traversal}} e \textcolor{azul}{\ref{passo:rev_traversal}} são repetidos até que $slew_0$ convirja em uma precisão $\varepsilon$.
-				\end{enumerate}
-			\end{minipage}		
+		\begin{frame}[t]
+			\begin{center}
+				\begin{columns}
+					\begin{column}{0.63\textwidth}
+						\includegraphics[width=\textwidth]{img/lumped_rc.pdf} 
+					\end{column}
+					\begin{column}{0.37\textwidth}
+						\includegraphics[width=\textwidth]{img/fluxograma.pdf} 
+					\end{column}
+				\end{columns}
+			\end{center}
 		\end{frame}
 
-		\subsection*{Atualização da Capacitância Efetiva}
+
+		\subsection*{Exemplo}
+
+		\begin{frame}[t]
+			\frametitle{Inicialização}
+			\vspace{-0.25cm}
+			\begin{center}
+				\includegraphics[width=0.8\linewidth]{img/inicializacao1.pdf}
+			\end{center}
+			\vspace{0.25cm}
+			$C_{eff_0} = C_0 + C_1 + C_2 + C_3 + C_4 + C_5 + C_6 + C_7$ \\
+			$C_{eff_1} = C_1 + C_2 + C_3 + C_4 + C_5 + C_6 + C_7$ \\
+			$C_{eff_2} = C_2 + C_4 + C_7$ \\
+			$C_{eff_3} = C_3 + C_5 + C_6$ \\
+			$C_{eff_4} = C_4 + C_7$ \\
+			$C_{eff_5} = C_5$ \\
+			$C_{eff_6} = C_6$ \\
+			$C_{eff_7} = C_7$
+		\end{frame}
+
+
+		\begin{frame}[t]
+			\frametitle{Degradação dos \textit{Slews}}
+			\pgfdeclareimage[width=\linewidth]{slew00}{img/inicializacao1.pdf}
+			\pgfdeclareimage[width=\linewidth]{slew0}{img/slew0.pdf}
+			\pgfdeclareimage[width=\linewidth]{slew1}{img/slew1.pdf}
+			\pgfdeclareimage[width=\linewidth]{slew2}{img/slew2.pdf}
+			\pgfdeclareimage[width=\linewidth]{slew22}{img/slew22.pdf}
+			\pgfdeclareimage[width=\linewidth]{slew3}{img/slew3.pdf}
+			
+
+			\pgfuseimage{slew00}<1>
+			\pgfuseimage{slew0}<2>
+			\pgfuseimage{slew1}<3>
+			\pgfuseimage{slew2}<4>
+			\pgfuseimage{slew22}<5>
+			\pgfuseimage{slew3}<6>
+			
+			\vspace{0.5cm}
+
+			
+			\only<2>{
+				$\textcolor{azul}{slew_0} \gets slew\_biblioteca(C_{ceff_0})$			
+			}
+			
+			\only<3>{
+				$\textcolor{vermelho}{slew_1} \gets \frac{\textcolor{azul}{slew_0}}{1 - x(1 - e^{-\frac{1}{x}})}$\\\vspace{0.25cm}
+				$x = \frac{R_1 C_{eff_1}}{\textcolor{azul}{slew_0}}$
+			}
+			\only<4>{
+				$\textcolor{vermelho}{slew_3} \gets \frac{\textcolor{azul}{slew_1}}{1 - x(1 - e^{-\frac{1}{x}})}$\\\vspace{0.25cm}
+				$x = \frac{R_3 C_{eff_3}}{\textcolor{azul}{slew_1}}$
+			}
+			\only<5>{
+				$\textcolor{vermelho}{slew_2} \gets \frac{\textcolor{azul}{slew_1}}{1 - x(1 - e^{-\frac{1}{x}})}$\\\vspace{0.25cm}
+				$x = \frac{R_2 C_{eff_2}}{\textcolor{azul}{slew_1}}$
+			}
+			\only<6>{
+				\textbf{[...]}\\
+				\begin{columns}[t]
+			
+					\begin{column}{0.33 \textwidth}
+						$\textcolor{vermelho}{slew_5} \gets \frac{slew_3}{1 - x_5(1 - e^{-\frac{1}{x_5}})}$
+					\end{column}
+					\begin{column}{0.33 \textwidth}
+						$\textcolor{vermelho}{slew_6} \gets \frac{slew_3}{1 - x_6(1 - e^{-\frac{1}{x_6}})}$
+					\end{column}
+					\begin{column}{0.33 \textwidth}
+						$\textcolor{vermelho}{slew_7} \gets \frac{slew_4}{1 - x_7(1 - e^{-\frac{1}{x_7}})}$
+					\end{column}
+				\end{columns}
+%				$\textcolor{vermelho}{slew_5} \gets \frac{slew_3}{1 - x_5(1 - e^{-\frac{1}{x_5}})}$\\
+%				$\textcolor{vermelho}{slew_6} \gets \frac{slew_3}{1 - x_6(1 - e^{-\frac{1}{x_6}})}$\\
+%				$\textcolor{vermelho}{slew_7} \gets \frac{slew_4}{1 - x_7(1 - e^{-\frac{1}{x_7}})}$\\
+
+			}
+
+		\end{frame}
+
 		\begin{frame}[t]
 			\frametitle{Atualização da Capacitância Efetiva}
 %			\begin{minipage}{\linewidth}
-				\pgfdeclareimage[width=\linewidth]{inicializacao1}{img/inicializacao1.pdf}
-				\pgfdeclareimage[width=\linewidth]{inicializacao2}{img/inicializacao2.pdf}
-				\pgfdeclareimage[width=\linewidth]{inicializacao3}{img/inicializacao3.pdf}
-				\pgfdeclareimage[width=\linewidth]{inicializacao4}{img/inicializacao4.pdf}
-				\pgfdeclareimage[width=\linewidth]{inicializacao5}{img/inicializacao5.pdf}
-				\pgfdeclareimage[width=\linewidth]{inicializacao6}{img/inicializacao6.pdf}
-				\pgfdeclareimage[width=\linewidth]{inicializacao7}{img/inicializacao7.pdf}
+			\pgfdeclareimage[width=\linewidth]{inicializacao1}{img/inicializacao1.pdf}
+			\pgfdeclareimage[width=\linewidth]{inicializacao2}{img/inicializacao2.pdf}
+			\pgfdeclareimage[width=\linewidth]{inicializacao3}{img/inicializacao3.pdf}
+			\pgfdeclareimage[width=\linewidth]{inicializacao4}{img/inicializacao4.pdf}
+			\pgfdeclareimage[width=\linewidth]{inicializacao5}{img/inicializacao5.pdf}
+			\pgfdeclareimage[width=\linewidth]{inicializacao6}{img/inicializacao6.pdf}
+			\pgfdeclareimage[width=\linewidth]{inicializacao7}{img/inicializacao7.pdf}
 
 
-				\pgfuseimage{inicializacao1}<1>
-				\pgfuseimage{inicializacao2}<2>
-				\pgfuseimage{inicializacao3}<3>
-				\pgfuseimage{inicializacao4}<4>
-				\pgfuseimage{inicializacao5}<5>
-				\pgfuseimage{inicializacao6}<6>
-				\pgfuseimage{inicializacao7}<7>
-				\pgfuseimage{inicializacao1}<8>
+			\pgfuseimage{inicializacao1}<1>
+			\pgfuseimage{inicializacao2}<2>
+			\pgfuseimage{inicializacao3}<3>
+			\pgfuseimage{inicializacao4}<4>
+			\pgfuseimage{inicializacao5}<5>
+			\pgfuseimage{inicializacao6}<6>
+			\pgfuseimage{inicializacao7}<7>
+			
+			\vspace{0.5cm}
 				
 %			\end{minipage}
 			\only<2>{
-				\textbf{C_{eff_7}} = \textcolor{verde}{C_7}\\
-				\textbf{C_{eff_6}} = \textcolor{verde}{C_6}\\
-				\textbf{C_{eff_5}} = \textcolor{verde}{C_5}
+				$C_{eff_7} \gets \textcolor{verde}{C_7}$\\
+				$C_{eff_6} \gets \textcolor{verde}{C_6}$\\
+				$C_{eff_5} \gets \textcolor{verde}{C_5}$
 			}
+			
 					
 			\only<3-4>{
-				\textbf{C_{eff_4}} = \textcolor{verde}{C_4}
+				$C_{eff_4} \gets \textcolor{verde}{C_4}$
 				\only<4>{
-					\textcolor{azul}{+ C_{eff_7} \times K_7}
+					$\textcolor{azul}{+ C_{eff_7} \times K_7}$ \\\vspace{0.25cm}
+					$K_7 = 1 - \frac{2 R_7 C_{eff_7}}{slew_4}(1 - e^{-\frac{slew_4}{2 R_7 C_{eff_7}}})$
 				}
 			}
 			\only<5-6>{
-				\textbf{C_{eff_3}} = \textcolor{verde}{C_3}
+				$C_{eff_3} \gets \textcolor{verde}{C_3}$
 				\only<6>{
-					\textcolor{azul}{+ C_{eff_5} \times K_5 + C_{eff_6} \times K_6}
+					$\textcolor{azul}{+ C_{eff_5} \times K_5 + C_{eff_6} \times K_6}$ \\\vspace{0.25cm}
+					$K_5 = 1 - \frac{2 R_5 C_{eff_5}}{slew_3}(1 - e^{-\frac{slew_3}{2 R_5 C_{eff_5}}})$\\
+					$K_6 = 1 - \frac{2 R_6 C_{eff_6}}{slew_3}(1 - e^{-\frac{slew_3}{2 R_6 C_{eff_6}}})$
 				}
 			}
 			\only<7>{
-%				\textbf{C_{eff_2}} = C_2 + C_{eff_4} \times K_4\\
-%				\textbf{C_{eff_1}} = C_1 + C_{eff_2} \times K_2 + C_{eff_3} \times K_3\\
-				\textbf{...} \\
-				\textbf{C_{eff_0}} = \textcolor{verde}{C_0} \textcolor{azul}{+ C_{eff_1} \times K_1}
+				\textbf{[...]} \\\vspace{0.25cm}
+				$C_{eff_0} \gets \textcolor{verde}{C_0} \textcolor{azul}{+ C_{eff_1} \times K_1}$\\\vspace{0.25cm}
+				$K_1 = 1 - \frac{2 R_1 C_{eff_1}}{slew_0}(1 - e^{-\frac{slew_0}{2 R_1 C_{eff_1}}})$
 			}
 			
-			\only<8>
-			{
-				\\\ 
-				\\\ 
-				\textbf{No passo de inicialização:} \\
-				K_i = 1\ \forall\ i < N \\
-				Ou seja, C_{eff_i} = C_{total_i}
-			}
+			
 							
 		\end{frame}
 	
 	\section{Análise de Timing Estática}
 	
+		\subsection*{}
 		\begin{frame}
-		sta sta
+			\frametitle{Visão Geral}
+			\begin{center}
+				\includegraphics[width=\linewidth]{img/fluxograma_sta.pdf}
+			\end{center}
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Grafo de \textit{Timing}}
+			\begin{center}
+				\includegraphics[width=0.7\linewidth]{img/exemplo_circuito_simple.pdf} \\\vspace{0.5cm} \pause
+				\includegraphics[width=0.8\linewidth]{img/grafo_lista_nivel_logico.pdf}
+			\end{center}
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Algoritmo de STA}
+			\begin{algorithm}[H]
+					\ParaTodo{ $v_i \in V$ em ordem topológica}{
+					\uSe{$v_i$ é um pino de entrada}
+					{
+						$C_{eff} \gets calcular\_C_{eff}()$; \label{lin:calcular_ceff}\\ 
+						$d_{i \to o}	 \gets delay\_biblioteca(s_i, C_{eff})$; \label{lin:delay}\\ 
+						$slew_{i \to o}	 \gets slew\_biblioteca(slew_i, C_{eff})$; \label{lin:slew}\\ 
+						$propagar\_atrasos()$; \label{lin:propaga}
+					}
+					\SenaoSe{$v_i$ é um pino de saída ou é uma entrada primária}
+					{
+						$propagar\_para\_fanouts()$;\label{lin:propaga_fanouts}
+					}
+				}
+				\ParaTodo{ cada $v_i \in V$ em ordem topológica reversa}{
+					$atualiza\_folgas(v_i)$;
+				}
+			\end{algorithm}
 		\end{frame}
 	
 	\section{Experimentos}
