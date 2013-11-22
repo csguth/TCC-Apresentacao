@@ -8,7 +8,9 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{inputenc}
-\usepackage[lined,boxed,ruled,commentsnumbered]{algorithm2e}
+\usepackage[portuguese, lined,boxed,ruled,commentsnumbered]{algorithm2e}
+\SetKwFor{Para}{para}{fa\c{c}a}{fim para}
+
 \usepackage{pgfbaseimage}
 \usepackage{subfigure}
 
@@ -455,45 +457,132 @@
 				\includegraphics[width=0.8\linewidth]{img/grafo_lista_nivel_logico.pdf}
 			\end{center}
 		\end{frame}
-		
 		\begin{frame}
 			\frametitle{Algoritmo de STA}
 			\begin{algorithm}[H]
-					\ParaTodo{ $v_i \in V$ em ordem topológica}{
+				\Para{ $v_i \in V$ em ordem topológica}{
 					\uSe{$v_i$ é um pino de entrada}
 					{
-						$C_{eff} \gets calcular\_C_{eff}()$; \label{lin:calcular_ceff}\\ 
-						$d_{i \to o}	 \gets delay\_biblioteca(s_i, C_{eff})$; \label{lin:delay}\\ 
-						$slew_{i \to o}	 \gets slew\_biblioteca(slew_i, C_{eff})$; \label{lin:slew}\\ 
-						$propagar\_atrasos()$; \label{lin:propaga}
+						Cálculo da $C_{eff}$;\\
+						Cálculo do \textit{delay} e \textit{slew};\\
+						Propagação do \textit{arrival time}.
 					}
 					\SenaoSe{$v_i$ é um pino de saída ou é uma entrada primária}
 					{
-						$propagar\_para\_fanouts()$;\label{lin:propaga_fanouts}
+						Propagação do \textit{arrival time} pela interconexão.
 					}
 				}
-				\ParaTodo{ cada $v_i \in V$ em ordem topológica reversa}{
-					$atualiza\_folgas(v_i)$;
+				\Para{ cada $v_i \in V$ em ordem topológica reversa}{
+					Atualização das folgas.
 				}
 			\end{algorithm}
 		\end{frame}
 	
 	\section{Experimentos}
-	
+		
+		\subsection*{}		
 		\begin{frame}
-		experimentos
+			\frametitle{Validação do Modelo de Capacitância Concentrada}
+			\begin{center}
+				\includegraphics[width=\linewidth]{img/lumped_capacitance_vs_primetime.pdf} 
+				$$erro = 100 \times \frac{|a - b|}{\max(|a|, |b|)} $$
+			\end{center}
+
+			$a = $ ferramenta implementada \\
+			$b = $ primetime
+			
+			
 		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Validação Atraso das Interconexões}
+			\begin{center}
+				\includegraphics[width=\linewidth]{img/ceff_elmore_slew.pdf}
+				$$erro = 100 \times \frac{a - b}{ b } $$
+			\end{center}
+			
+			$a = $ ferramenta implementada \\
+			$b = $ primetime
+			
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Impacto da degradação do \textit{Slew}}
+			\begin{center}
+				\includegraphics[width=\linewidth]{img/ceff_elmore_no_slew.pdf}
+				$$erro = 100 \times \frac{a - b}{ b } $$
+			\end{center}
+			
+			$a = $ ferramenta implementada \\
+			$b = $ primetime
+			
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Relação $C_{eff} / C_{total}$ por \textit{leakage}}
+			\includegraphics[width=\linewidth]{img/ceff_ratio/ceff_ctotal_todos.pdf}
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Relação $C_{eff} / C_{total}$: $pci\_bridge32\_slow$}
+			\includegraphics[width=\linewidth]{img/experimentos/pci_bridge32_resistance_full.pdf} 
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Relação $C_{eff} / C_{total}$: $matrix\_mult\_slow$}
+			\includegraphics[width=\linewidth]{img/experimentos/matrix_mult_resistance_full.pdf} 
+		\end{frame}
+
+		
+		\begin{frame}
+			\frametitle{Erros de \textit{arrival} nas saídas primárias}
+			\begin{center}
+				\includegraphics[width=0.9\linewidth]{img/arrival_error/pci_bridge32_puri.pdf}\\
+			\end{center}
+			\textbf{Circuito:} $pci\_bridge32\_slow$
+		\end{frame}		
+		
+		\begin{frame}
+			\frametitle{Erros de \textit{arrival} nas saídas primárias}
+			\begin{center}
+				\includegraphics[width=0.9\linewidth]{img/arrival_error/matrix_mult_puri.pdf}\\
+			\end{center}
+			\textbf{Circuito:} $matrix\_mult\_slow$
+		\end{frame}
+			
+		
+		
+		
 	
 	\section{Conclusões}
 	
 		\begin{frame}
-		conclus~oes
+		\frametitle{Conclusões}
+			\begin{itemize}
+				\item A desconsideração da degradação do \textit{slew} leva a uma estimativa muito otimista (mais de 30\% de erro);
+				
+				\item Capacitância Efetiva $\to$ \textit{Resistive Shielding};
+				
+				\item A ferramenta implementada subestima o \textit{PrimeTime} em \textbf{4\%} com tempo de execução  cerca de \textbf{8x} menor;
+				
+				\item $C_{eff} / C_{total}$ perto de $1$ nos circuitos da competição do ISPD 2013.
+			\end{itemize}
 		\end{frame}
 	
 	\section{Trabalhos Futuros}
 		
 		\begin{frame}
-		trabalhos
+		\frametitle{Trabalhos Futuros}
+			\begin{itemize}
+				\item Investigação detalhada dos erros obtidos;
+				
+				\item Avaliação da técnica de STA em uma ferramenta de otimização (e. g., \textit{gate sizing});
+				
+				\item Utilização de circuitos e bibliotecas comerciais.
+			\end{itemize}
 		\end{frame}
+		
+	\section*{}
+	\frame{\titlepage}
 	
 \end{document}
