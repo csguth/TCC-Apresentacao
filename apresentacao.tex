@@ -9,7 +9,7 @@
 \usepackage{amssymb}
 \usepackage{inputenc}
 \usepackage[portuguese, lined,boxed,ruled,commentsnumbered]{algorithm2e}
-\SetKwFor{Para}{para}{fa\c{c}a}{fim para}
+\SetKwFor{ParaTodo}{para todo}{fa\c{c}a}{fim para}
 
 \usepackage{pgfbaseimage}
 \usepackage{subfigure}
@@ -19,6 +19,12 @@
 \definecolor{verde}{rgb}{0,1,0}
 \definecolor{vermelho}{rgb}{0.56,0.05,0.09}
 
+
+\definecolor{vermelho tema}{HTML}{8F0F17}
+\definecolor{amarelo tema}{HTML}{FFF919}
+\definecolor{vermelho claro tema}{HTML}{FF000F}
+\definecolor{azul claro tema}{HTML}{148BCC}
+\definecolor{azul tema}{HTML}{0976B2}
 
 
 
@@ -30,12 +36,19 @@
 {Análise de \textit{Timing} Estática e a Avaliação do Impacto do Atraso das Interconexões em Circuitos Digitais}
 \author % (optional, for multiple authors)
 {Chrystian de Sousa Guth}
+
+\
 \institute[UFSC] % (optional)
 {
+  Orientador: M.Sc. Vinícius dos Santos Livramento \\
+  Coorientador: Prof. Dr. José Luís Almada Güntzel\\
+  \ \\
   Curso de Bacharelado em Ciências da Computação\\
   Universidade Federal de Santa Catarina
 
 }
+
+
 \date[nov12] % (optional)
 {Novembro de 2013}
 \subject{Computação}
@@ -47,7 +60,7 @@
 	\frame{\titlepage}
 	
 	% SUMARIO
-	\begin{frame}
+	\begin{frame}[t]
 		\frametitle{Sumário}
 		\tableofcontents[]
 	\end{frame}
@@ -66,7 +79,7 @@
 %					\item Adoção do fluxo \textit{standard cell}.
 %				\end{itemize}
 %			\end{frame}
-			\begin{frame}
+			\begin{frame}[t]
 				\frametitle{Motivação}
 				\pgfdeclareimage[width=1.1 \linewidth]{motivacao1}{img/motivacao1.pdf}
 				\pgfdeclareimage[width=1.1 \linewidth]{motivacao2}{img/motivacao2.pdf}
@@ -85,7 +98,7 @@
 			\end{frame}
 			
 		
-			\begin{frame}
+			\begin{frame}[t]
 				\frametitle{Motivação: Fluxo \textit{Standard Cell}}
 				\begin{minipage}{0.5 \textwidth}
 					\includegraphics[width=\textwidth]{img/fluxo_standard_cell.pdf}
@@ -105,7 +118,7 @@
 				
 			\end{frame}
 		
-			\begin{frame}
+			\begin{frame}[t]
 				\frametitle{Justificativa}
 				\begin{itemize}
 					\item Inexistência de ferramentas de STA em domínio público;
@@ -113,7 +126,7 @@
 				\end{itemize}
 			\end{frame}
 		
-			\begin{frame}
+			\begin{frame}[t]
 				\frametitle{Objetivos}
 				\begin{itemize}
 					\item Projeto, avaliação, validação e documentação de uma ferramenta de STA voltada para o fluxo \textit{standard cell.}
@@ -126,7 +139,7 @@
 				\end{itemize}
 			\end{frame}
 			
-			\begin{frame}
+			\begin{frame}[t]
 				\frametitle{Escopo}
 				\begin{itemize}
 					\item Modelos de atraso adotados em fluxo \textit{standard cell};
@@ -159,7 +172,7 @@
 				\end{center}
 			\end{frame}
 			
-			\begin{frame}
+			\begin{frame}[t]
 				\frametitle{Características Temporais}
 				\begin{itemize}[<+->]
 					\item \textit{Timing Arc} e \textit{Driver} \\
@@ -174,7 +187,7 @@
 			\end{frame}
 
 			
-			\begin{frame}
+			\begin{frame}[t]
 				\frametitle{Modelo de Atraso Não-Linear}
 					\begin{center}
 						\includegraphics[width=0.7\textwidth]{img/nldm_1.pdf}
@@ -191,12 +204,12 @@
 		\subsection*{Interconexões}
 
 			
-			\begin{frame}
+			\begin{frame}[t]
 				\includegraphics[width=\textwidth]{img/circuito_interconexao.pdf} 
 			\end{frame}
 			
 			\subsubsection*{Modelos de Interconexões}
-				\begin{frame}
+				\begin{frame}[t]
 					\frametitle{Modelo RC Distribuído}
 					\begin{center}
 						\includegraphics[width=\textwidth]{img/distributed_rc.pdf} 
@@ -210,7 +223,7 @@
 					
 				\end{frame}
 				
-				\begin{frame}
+				\begin{frame}[t]
 					\frametitle{Modelo de Capacitância Concetrada}
 					\begin{center}
 						\includegraphics[width=\textwidth]{img/lumped_c.pdf} 
@@ -222,7 +235,7 @@
 					\end{itemize}							
 				\end{frame}
 				
-				\begin{frame}
+				\begin{frame}[t]
 					\frametitle{Modelo de RC Concentrado}
 					\begin{center}
 						\includegraphics[width=\textwidth]{img/lumped_rc.pdf} 
@@ -236,7 +249,7 @@
 				\end{frame}
 			
 			\subsubsection*{Características Temporais}
-			\begin{frame}
+			\begin{frame}[t]
 				\frametitle{Características Temporais}
 				
 				
@@ -288,7 +301,7 @@
 	\section{Técnica Implementada}
 	
 		\subsection*{Visão Geral}
-		\begin{frame}
+		\begin{frame}[t]
 			\frametitle{Técnica Implementada}
 			\includegraphics[width=\textwidth]{img/imagem_puri.pdf} 
 		\end{frame}
@@ -443,24 +456,24 @@
 	\section{Análise de Timing Estática}
 	
 		\subsection*{}
-		\begin{frame}
+		\begin{frame}[t]
 			\frametitle{Visão Geral}
 			\begin{center}
 				\includegraphics[width=\linewidth]{img/fluxograma_sta.pdf}
 			\end{center}
 		\end{frame}
 		
-		\begin{frame}
+		\begin{frame}[t]
 			\frametitle{Grafo de \textit{Timing}}
 			\begin{center}
 				\includegraphics[width=0.7\linewidth]{img/exemplo_circuito_simple.pdf} \\\vspace{0.5cm} \pause
 				\includegraphics[width=0.8\linewidth]{img/grafo_lista_nivel_logico.pdf}
 			\end{center}
 		\end{frame}
-		\begin{frame}
+		\begin{frame}[t]
 			\frametitle{Algoritmo de STA}
 			\begin{algorithm}[H]
-				\Para{ $v_i \in V$ em ordem topológica}{
+				\ParaTodo{ $v_i \in V$ em ordem topológica}{
 					\uSe{$v_i$ é um pino de entrada}
 					{
 						Cálculo da $C_{eff}$;\\
@@ -472,7 +485,7 @@
 						Propagação do \textit{arrival time} pela interconexão.
 					}
 				}
-				\Para{ cada $v_i \in V$ em ordem topológica reversa}{
+				\ParaTodo{ $v_i \in V$ em ordem topológica reversa}{
 					Atualização das folgas.
 				}
 			\end{algorithm}
@@ -480,8 +493,32 @@
 	
 	\section{Experimentos}
 		
-		\subsection*{}		
-		\begin{frame}
+		\subsection*{Metodologia e Infraestrutura Experimental}
+		\begin{frame}[t]
+			\frametitle{Metodologia Experimental}
+			\begin{center}
+				\includegraphics[width=0.7\linewidth]{img/fluxo_validacao.pdf} 
+			\end{center}
+		\end{frame}	
+		
+		\begin{frame}[t]
+			\frametitle{Infraestrutura Experimental}
+			\begin{center}
+				\begin{itemize}
+					\item 7 circuitos \\
+					\begin{itemize}
+						\item Descrição em linguagem de descrição de \textit{hardware} (.v) \\
+						\item Restrições de projeto (.sdc)\\
+						\item Descrição dos parasitas (.spef)
+					\end{itemize}
+					\item Biblioteca \textit{standard cell} realista \\
+					\item Ferramenta Industrial Synopsys $\textregistered$ \textit{PrimeTime}
+				\end{itemize}
+			\end{center}
+		\end{frame}			
+		
+		\subsection*{Experimentos}
+		\begin{frame}[t]
 			\frametitle{Validação do Modelo de Capacitância Concentrada}
 			\begin{center}
 				\includegraphics[width=\linewidth]{img/lumped_capacitance_vs_primetime.pdf} 
@@ -494,7 +531,7 @@
 			
 		\end{frame}
 		
-		\begin{frame}
+		\begin{frame}[t]
 			\frametitle{Validação Atraso das Interconexões}
 			\begin{center}
 				\includegraphics[width=\linewidth]{img/ceff_elmore_slew.pdf}
@@ -506,7 +543,7 @@
 			
 		\end{frame}
 		
-		\begin{frame}
+		\begin{frame}[t]
 			\frametitle{Impacto da degradação do \textit{Slew}}
 			\begin{center}
 				\includegraphics[width=\linewidth]{img/ceff_elmore_no_slew.pdf}
@@ -518,36 +555,39 @@
 			
 		\end{frame}
 		
-		\begin{frame}
+		\begin{frame}[t]
 			\frametitle{Relação $C_{eff} / C_{total}$ por \textit{leakage}}
 			\includegraphics[width=\linewidth]{img/ceff_ratio/ceff_ctotal_todos.pdf}
 		\end{frame}
 		
 		\begin{frame}
 			\frametitle{Relação $C_{eff} / C_{total}$: $pci\_bridge32\_slow$}
-			\includegraphics[width=\linewidth]{img/experimentos/pci_bridge32_resistance_full.pdf} 
+			\pgfdeclareimage[width=\linewidth]{ratiopci}{img/experimentos/pcifull.pdf}
+			\pgfdeclareimage[width=\linewidth]{ratiopcizoom}{img/experimentos/pcizoom.pdf}
+			\pgfuseimage{ratiopci}<1>
+			\pgfuseimage{ratiopcizoom}<2>
 		\end{frame}
 		
 		\begin{frame}
 			\frametitle{Relação $C_{eff} / C_{total}$: $matrix\_mult\_slow$}
-			\includegraphics[width=\linewidth]{img/experimentos/matrix_mult_resistance_full.pdf} 
+			\pgfdeclareimage[width=\linewidth]{ratiomatrix}{img/experimentos/matrixfull.pdf}
+			\pgfdeclareimage[width=\linewidth]{ratiomatrixzoom}{img/experimentos/matrixzoom.pdf}
+			\pgfuseimage{ratiomatrix}<1>
+			\pgfuseimage{ratiomatrixzoom}<2>
 		\end{frame}
 
-		
-		\begin{frame}
-			\frametitle{Erros de \textit{arrival} nas saídas primárias}
+		\begin{frame}[t]
+			\frametitle{Erros de \textit{arrival} nas saídas primárias: $pci\_bridge32\_slow$}
 			\begin{center}
 				\includegraphics[width=0.9\linewidth]{img/arrival_error/pci_bridge32_puri.pdf}\\
 			\end{center}
-			\textbf{Circuito:} $pci\_bridge32\_slow$
 		\end{frame}		
 		
-		\begin{frame}
-			\frametitle{Erros de \textit{arrival} nas saídas primárias}
+		\begin{frame}[t]
+			\frametitle{Erros de \textit{arrival} nas saídas primárias: $matrix\_mult\_slow$}
 			\begin{center}
 				\includegraphics[width=0.9\linewidth]{img/arrival_error/matrix_mult_puri.pdf}\\
 			\end{center}
-			\textbf{Circuito:} $matrix\_mult\_slow$
 		\end{frame}
 			
 		
@@ -556,7 +596,7 @@
 	
 	\section{Conclusões}
 	
-		\begin{frame}
+		\begin{frame}[t]
 		\frametitle{Conclusões}
 			\begin{itemize}
 				\item A desconsideração da degradação do \textit{slew} leva a uma estimativa muito otimista (mais de 30\% de erro);
@@ -571,7 +611,7 @@
 	
 	\section{Trabalhos Futuros}
 		
-		\begin{frame}
+		\begin{frame}[t]
 		\frametitle{Trabalhos Futuros}
 			\begin{itemize}
 				\item Investigação detalhada dos erros obtidos;
