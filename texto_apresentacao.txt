@@ -114,7 +114,7 @@ Nesta tabela estão apresentadas algumas tecnicas.
 
 *click*
 
-Diversas técnicas podem ser combinadas a fim de se obter todas as informações temporais, como é o caso da técnica D2M e PERI que foram combinadas no trabalho de Khang et. al. (2013). Porém, para modelar o atraso dos drivers, o trabalho utilizou a abordagem de capacitancia concentrada, portanto não será comparado neste trabalho.
+Diversas técnicas podem ser combinadas a fim de se obter todas as informações temporais, como é o caso da técnica D2M e PERI que foram combinadas no trabalho de Khang et. al. (2013). Porém, para modelar o atraso dos drivers, o trabalho utilizou a abordagem de capacitancia concentrada, apresentando erros superiores aos erros obtidos pela ferramenta implementada neste trabalho.
 
 *click*
 *click*
@@ -276,14 +276,48 @@ a mesma tecnica para calculo da capacitancia efetiva e atraso das interconexoes 
 o experimento apresentou resultados muito otimistas para TNS e caminho critico, com valores perto de 30% e 20% respectivamente.
 
 ### 33 ###
-neste experimento foi calculado relacao media entre ceff e ctotal para os circuitos considerando as tres configuracoes de leakage apresentadas anterior mente. 
+neste experimento foi calculado relacao media entre ceff e ctotal para os circuitos considerando as tres configuracoes de leakage apresentadas anteriormente. 
 
-este experimento mostra que nos circuitos da competicao de sizing do ispd, a relacao ceff/ctotal media é bem proxima de 1, e a medida que o leakage aumenta, essa relação fica mais proxima ainda de 1.
+este experimento mostra que nos circuitos da competicao de sizing do ispd, a relacao ceff/ctotal media é bem proxima de 1, e a medida que o leakage aumenta, essa relação fica mais proxima ainda.
 
-os histogramas a seguir apresentam as relacoes ceff/ctotal divididas em tres categorias.
+os histogramas a seguir apresentam as relacoes ceff/ctotal divididas em tres categorias
 
+### 34 ###
 
+na primeira parte se encontram as interconexoes com menor valor de resistencia, na segunda, valores médios, e por último, maiores resistencias.
 
+*click*
 
+ao darmos um zoom limitando o eixo y em 200, observamos que nas resistencias maiores existem mais interconexoes com a relacao menor que 1. ou seja, maior o efeito de resistive shielding na interconexão.
+
+### 35 ###
+
+similarmente, no circuito matrix mult
+
+*click*
+
+com zoom em 500
+
+Transição: Como a relacao media de ceff/ctotal é proxima de 1 nos circuitos testados, é interessante também avaliar a técnica de capacitancia concentrada de modo a obter um runtime menor.
+
+### 36 ###
+Neste experimento, a analise de timing foi realizada utilizando a abordagem de capacitancia concentrada para o driver, atraso de elmore para interconexao e degradação do slew.
+
+a técnica se mostrou 32x mais rápida que o primetime e y x mais rápida que a técnica de ceff apresentada anteriormente, apresentando resultados pessimistas em relação ao primetime.
+
+Os erros continuam baixos, porém mais altos que os do experimento anterior. (10.52% e 4.63%)
+
+### 37 ###
+finalmente as minhas conclusoes:
+
+*ler bullets rapidamente*
+
+### 38 ###
+aqui são apresentadas algumas perspectivas de trabalhos futuros:
+
+*ler bullets*
+
+### 39 ###
+FIM
 
  
