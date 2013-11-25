@@ -2,6 +2,8 @@
 \usetheme{Szeged}
 \usecolortheme{beaver}
 %\usefonttheme{serif}
+\setbeamertemplate{footline}[frame number]
+
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
@@ -13,11 +15,14 @@
 
 \usepackage{pgfbaseimage}
 \usepackage{subfigure}
+\usepackage{framed}
+
 
 
 \definecolor{azul}{rgb}{0.03,0.46,0.69}
 \definecolor{verde}{rgb}{0,1,0}
 \definecolor{vermelho}{rgb}{0.56,0.05,0.09}
+\definecolor{black}{HTML}{000000}
 
 
 \definecolor{vermelho tema}{HTML}{8F0F17}
@@ -25,8 +30,9 @@
 \definecolor{vermelho claro tema}{HTML}{FF000F}
 \definecolor{azul claro tema}{HTML}{148BCC}
 \definecolor{azul tema}{HTML}{0976B2}
+\definecolor{amareloclaro}{HTML}{FFFFB3}
 
-
+\definecolor{shadecolor}{HTML}{FFFFB3}
 
 %\everymath{\bf \color{azul}}
 %\everydisplay{\bf \color{azul}}
@@ -37,11 +43,14 @@
 \author % (optional, for multiple authors)
 {Chrystian de Sousa Guth}
 
-\
+
 \institute[UFSC] % (optional)
 {
-  Orientador: M.Sc. Vinícius dos Santos Livramento \\
-  Coorientador: Prof. Dr. José Luís Almada Güntzel\\
+  \textcolor{vermelho tema}{Orientador}\\
+  M.Sc. Vinícius dos Santos Livramento \\
+  \ \\
+  \textcolor{vermelho tema}{Coorientador}\\
+  Prof. Dr. José Luís Almada Güntzel\\
   \ \\
   Curso de Bacharelado em Ciências da Computação\\
   Universidade Federal de Santa Catarina
@@ -79,13 +88,13 @@
 %					\item Adoção do fluxo \textit{standard cell}.
 %				\end{itemize}
 %			\end{frame}
-			\begin{frame}[t]
+			\begin{frame}
 				\frametitle{Motivação}
-				\pgfdeclareimage[width=1.1 \linewidth]{motivacao1}{img/motivacao1.pdf}
-				\pgfdeclareimage[width=1.1 \linewidth]{motivacao2}{img/motivacao2.pdf}
-				\pgfdeclareimage[width=1.1 \linewidth]{motivacao3}{img/motivacao3.pdf}
-				\pgfdeclareimage[width=1.1 \linewidth]{motivacao4}{img/motivacao4.pdf}
-				\pgfdeclareimage[width=1.1 \linewidth]{motivacao5}{img/motivacao5.pdf}
+				\pgfdeclareimage[width=\linewidth]{motivacao1}{img/motivacao1.pdf}
+				\pgfdeclareimage[width=\linewidth]{motivacao2}{img/motivacao2.pdf}
+				\pgfdeclareimage[width=\linewidth]{motivacao3}{img/motivacao3.pdf}
+				\pgfdeclareimage[width=\linewidth]{motivacao4}{img/motivacao4.pdf}
+				\pgfdeclareimage[width=\linewidth]{motivacao5}{img/motivacao5.pdf}
 
 
 				\pgfuseimage{motivacao1}<1>
@@ -98,10 +107,10 @@
 			\end{frame}
 			
 		
-			\begin{frame}[t]
+			\begin{frame}
 				\frametitle{Motivação: Fluxo \textit{Standard Cell}}
 				\begin{minipage}{0.5 \textwidth}
-					\includegraphics[width=\textwidth]{img/fluxo_standard_cell.pdf}
+					\includegraphics[width=\textwidth]{img/fluxo_standard_cell_sta_destacada.pdf}
 				\end{minipage}
 				\begin{minipage}{0.4 \textwidth}
 					\begin{itemize}
@@ -112,7 +121,7 @@
 								\item Atraso Máximo.
 								
 							\end{itemize}
-						\item Avaliação das informações temporais nas mais diversas etapas do fluxo.
+						\item Avaliação das informações temporais durante o fluxo.
 					\end{itemize}
 				\end{minipage}
 				
@@ -121,6 +130,7 @@
 			\begin{frame}[t]
 				\frametitle{Justificativa}
 				\begin{itemize}
+					\item Necessidade de avaliação das informações temporais em circuitos comerciais de grande porte;
 					\item Inexistência de ferramentas de STA em domínio público;
 					\item Alto custo das licenças das ferramentas industriais.
 				\end{itemize}
@@ -129,7 +139,7 @@
 			\begin{frame}[t]
 				\frametitle{Objetivos}
 				\begin{itemize}
-					\item Projeto, avaliação, validação e documentação de uma ferramenta de STA voltada para o fluxo \textit{standard cell.}
+					\item Projeto, avaliação, validação e documentação de uma ferramenta de STA voltada para o fluxo \textit{standard cell;}
 					\begin{enumerate}
 						\item Modelo de interconexão de capacitância concentrada; \label{obj:1}
 						\item Técnica de Elmore para cálculo dos atrasos das interconexões; \label{obj:2}
@@ -145,12 +155,12 @@
 					\item Modelos de atraso adotados em fluxo \textit{standard cell};
 					\item 2 modelos de interconexão:
 						\begin{enumerate}
-							\item Modelo de Capacitância Concentrada
-							\item Modelo RC Concentrado
+							\item Modelo de Capacitância Concentrada;
+							\item Modelo RC Concentrado.
 						\end{enumerate}
 					\item \textbf{NÃO} faz parte do escopo:
 					\begin{itemize}
-						\item Tempos de \textit{setup} e \textit{hold} das células sequenciais;
+						\item Tempos de \textit{setup} e \textit{hold} das células sequenciais.
 					\end{itemize}
 				\end{itemize}
 				
@@ -172,13 +182,13 @@
 				\end{center}
 			\end{frame}
 			
-			\begin{frame}[t]
+			\begin{frame}
 				\frametitle{Características Temporais}
-				\begin{itemize}[<+->]
+				\begin{itemize}
 					\item \textit{Timing Arc} e \textit{Driver} \\
 						\includegraphics[width=0.3 \textwidth]{img/carac_portas_1.pdf}
-					\item \textit{Delay} \\
-						\includegraphics[width=0.7 \textwidth]{img/carac_portas_2.pdf}
+					\item \textit{Delay} \\ 
+						\includegraphics[width=0.7 \textwidth]{img/carac_portas_2.pdf} \pause
 					\item \textit{Slew} \\
 						\includegraphics[width=0.7 \textwidth]{img/carac_portas_3.pdf}
 				\end{itemize}
@@ -187,7 +197,7 @@
 			\end{frame}
 
 			
-			\begin{frame}[t]
+			\begin{frame}
 				\frametitle{Modelo de Atraso Não-Linear}
 					\begin{center}
 						\includegraphics[width=0.7\textwidth]{img/nldm_1.pdf}
@@ -204,52 +214,12 @@
 		\subsection*{Interconexões}
 
 			
-			\begin{frame}[t]
+			\begin{frame}
 				\includegraphics[width=\textwidth]{img/circuito_interconexao.pdf} 
 			\end{frame}
 			
-			\subsubsection*{Modelos de Interconexões}
-				\begin{frame}[t]
-					\frametitle{Modelo RC Distribuído}
-					\begin{center}
-						\includegraphics[width=\textwidth]{img/distributed_rc.pdf} 
-					\end{center}
-					\begin{itemize}
-						\item Cálculo do atraso reflete na solução de equações diferenciais;
-						\item Não possui fórmula fechada;
-						\item Modelos de interconexão simplificados são mais adotados em fluxo \textit{standard cell}.
-					\end{itemize}
-					
-					
-				\end{frame}
-				
-				\begin{frame}[t]
-					\frametitle{Modelo de Capacitância Concetrada}
-					\begin{center}
-						\includegraphics[width=\textwidth]{img/lumped_c.pdf} 
-					\end{center}
-					\begin{itemize}
-						\item Modelo utilizado quando a resistência da interconexão é despresível;
-						\item Concentra-se toda a capacitância da interconexão em um único capacitor;
-						\item Seu atraso é desconsiderado.
-					\end{itemize}							
-				\end{frame}
-				
-				\begin{frame}[t]
-					\frametitle{Modelo de RC Concentrado}
-					\begin{center}
-						\includegraphics[width=\textwidth]{img/lumped_rc.pdf} 
-					\end{center}
-					\begin{itemize}
-						\item Modelo amplamente adotado em fluxo \textit{standard cell};
-						\item Concentra-se toda a resistência de cada segmento  em um único resistor R;
-						\item Combina-se a capacitância total em um único capacitor C;
-						\item Árvore RC.
-					\end{itemize}								
-				\end{frame}
-			
 			\subsubsection*{Características Temporais}
-			\begin{frame}[t]
+			\begin{frame}
 				\frametitle{Características Temporais}
 				
 				
@@ -270,6 +240,47 @@
 						\item Degradação do \textit{Slew}. 		
 					\end{itemize}
 			\end{frame}
+			
+			\subsubsection*{Modelos de Interconexões}
+%				\begin{frame}
+%					\frametitle{Modelo RC Distribuído}
+%					\begin{center}
+%						\includegraphics[width=\textwidth]{img/distributed_rc.pdf} 
+%					\end{center}
+%					\begin{itemize}
+%						\item Cálculo do atraso reflete na solução de equações diferenciais (alto custo computacional);
+%						\item Modelos de interconexão simplificados são mais adotados em fluxo \textit{standard cell}.
+%					\end{itemize}
+%					
+%					
+%				\end{frame}
+				
+				\begin{frame}
+					\frametitle{Modelo de Capacitância Concentrada}
+					\begin{center}
+						\includegraphics[width=\textwidth]{img/lumped_c.pdf} 
+					\end{center}
+					\begin{itemize}
+						\item Amplamente utilizado nas primeiras etapas da síntese física;
+						\item Modelo utilizado quando a resistência da interconexão é desprezível;
+						\item Concentra-se toda a capacitância da interconexão em um único capacitor;
+						\item O atraso da interconexão é desconsiderado.
+					\end{itemize}							
+				\end{frame}
+				
+				\begin{frame}
+					\frametitle{Modelo de RC Concentrado}
+					\begin{center}
+						\includegraphics[width=\textwidth]{img/lumped_rc.pdf} 
+					\end{center}
+					\begin{itemize}
+						\item Modelo amplamente adotado em fluxo \textit{standard cell};
+						\item Concentra-se toda a resistência e capacitância de cada segmento em um único resistor R e capacitor C, respectivamente;
+						\item Geralmente representado como uma árvore RC.
+					\end{itemize}								
+				\end{frame}
+			
+			
 	
 	\section{Trabalhos Correlatos}
 		\subsection*{}
@@ -281,7 +292,7 @@
 			\pgfdeclareimage[width=0.8\linewidth]{correlatos3}{img/correlatos3.pdf}
 			\pgfdeclareimage[width=0.8\linewidth]{correlatos41}{img/correlatos41.pdf}
 			\pgfdeclareimage[width=0.8\linewidth]{correlatos4}{img/correlatos4.pdf}
-			\pgfdeclareimage[width=0.8\linewidth]{correlatos51}{img/correlatos51.pdf}
+			%\pgfdeclareimage[width=0.8\linewidth]{correlatos51}{img/correlatos51.pdf}
 			\pgfdeclareimage[width=0.8\linewidth]{correlatos5}{img/correlatos5.pdf}
 
 
@@ -292,8 +303,8 @@
 				\pgfuseimage{correlatos3}<4>
 				\pgfuseimage{correlatos41}<5>
 				\pgfuseimage{correlatos4}<6>
-				\pgfuseimage{correlatos51}<7>
-				\pgfuseimage{correlatos5}<8>
+				%\pgfuseimage{correlatos51}<7>
+				\pgfuseimage{correlatos5}<7>
 			\end{center}
 			
 		\end{frame}
@@ -310,7 +321,7 @@
 			\begin{center}
 				\begin{columns}
 					\begin{column}{0.63\textwidth}
-						\includegraphics[width=\textwidth]{img/lumped_rc.pdf} 
+						\includegraphics[width=\textwidth]{img/imagem_puri2.pdf} 
 					\end{column}
 					\begin{column}{0.37\textwidth}
 						\includegraphics[width=\textwidth]{img/fluxograma.pdf} 
@@ -456,6 +467,18 @@
 	\section{Análise de Timing Estática}
 	
 		\subsection*{}
+		\begin{frame}
+			\frametitle{Análise de \textit{Timing} Estática}
+			\pgfdeclareimage[width=0.8\linewidth]{circuitinho1}{img/circuitinho.pdf}
+			\pgfdeclareimage[width=0.8\linewidth]{circuitinho2}{img/circuitinho_contexto_interconexao.pdf}
+			\pgfdeclareimage[width=0.8\linewidth]{circuitinho3}{img/circuitinho_contexto_caminhos.pdf}
+			\begin{center}
+				\pgfuseimage{circuitinho1}<1>
+				\pgfuseimage{circuitinho2}<2>
+				\pgfuseimage{circuitinho3}<3>
+			\end{center}
+		\end{frame}
+		
 		\begin{frame}[t]
 			\frametitle{Visão Geral}
 			\begin{center}
@@ -470,50 +493,83 @@
 				\includegraphics[width=0.8\linewidth]{img/grafo_lista_nivel_logico.pdf}
 			\end{center}
 		\end{frame}
-		\begin{frame}[t]
-			\frametitle{Algoritmo de STA}
-			\begin{algorithm}[H]
-				\ParaTodo{ $v_i \in V$ em ordem topológica}{
-					\uSe{$v_i$ é um pino de entrada}
-					{
-						Cálculo da $C_{eff}$;\\
-						Cálculo do \textit{delay} e \textit{slew};\\
-						Propagação do \textit{arrival time}.
-					}
-					\SenaoSe{$v_i$ é um pino de saída ou é uma entrada primária}
-					{
-						Propagação do \textit{arrival time} pela interconexão.
-					}
-				}
-				\ParaTodo{ $v_i \in V$ em ordem topológica reversa}{
-					Atualização das folgas.
-				}
-			\end{algorithm}
+%		\begin{frame}[t]
+%			\frametitle{Algoritmo de STA}
+%			\begin{algorithm}[H]
+%				\ParaTodo{ $v_i \in V$ em ordem topológica}{
+%					\uSe{$v_i$ é um pino de entrada}
+%					{
+%						Cálculo da $C_{eff}$;\\
+%						Cálculo do \textit{delay} e \textit{slew};\\
+%						Propagação do \textit{arrival time}.
+%					}
+%					\SenaoSe{$v_i$ é um pino de saída ou é uma entrada primária}
+%					{
+%						Propagação do \textit{arrival time} pela interconexão.
+%					}
+%				}
+%				\ParaTodo{ $v_i \in V$ em ordem topológica reversa}{
+%					Atualização das folgas.
+%				}
+%			\end{algorithm}
+%		\end{frame}
+		\begin{frame}
+			\frametitle{Exemplo}
+			\pgfdeclareimage[width=0.8\linewidth]{algoritmo1}{img/algoritmo1.pdf}
+			\pgfdeclareimage[width=0.8\linewidth]{algoritmo2}{img/algoritmo2.pdf}
+			\pgfdeclareimage[width=0.8\linewidth]{algoritmo3}{img/algoritmo3.pdf}
+			\pgfdeclareimage[width=0.8\linewidth]{algoritmo4}{img/algoritmo4.pdf}
+			\pgfdeclareimage[width=0.8\linewidth]{algoritmo5}{img/algoritmo5.pdf}
+			\pgfdeclareimage[width=0.8\linewidth]{algoritmo6}{img/algoritmo6.pdf}
+			\pgfdeclareimage[width=0.8\linewidth]{algoritmo7}{img/algoritmo7.pdf}
+			\pgfdeclareimage[width=0.8\linewidth]{algoritmo8}{img/algoritmo8.pdf}
+
+			\begin{center}
+				\pgfuseimage{algoritmo1}<1>
+				\pgfuseimage{algoritmo2}<2>
+				\pgfuseimage{algoritmo3}<3>
+				\pgfuseimage{algoritmo4}<4>
+				\pgfuseimage{algoritmo5}<5>
+				\pgfuseimage{algoritmo6}<6>
+				\pgfuseimage{algoritmo7}<7>
+				\pgfuseimage{algoritmo8}<8>
+			\end{center}
+
 		\end{frame}
 	
 	\section{Experimentos}
 		
-		\subsection*{Metodologia e Infraestrutura Experimental}
-		\begin{frame}[t]
+		\subsection*{}
+		\begin{frame}
 			\frametitle{Metodologia Experimental}
 			\begin{center}
-				\includegraphics[width=0.7\linewidth]{img/fluxo_validacao.pdf} 
-			\end{center}
+				\includegraphics[width=0.75\linewidth]{img/fluxo_validacao.pdf} 
+			\end{center}	
 		\end{frame}	
 		
 		\begin{frame}[t]
-			\frametitle{Infraestrutura Experimental}
+			\frametitle{Metodologia e Infraestrutura Experimental}
 			\begin{center}
 				\begin{itemize}
-					\item 7 circuitos \\
-					\begin{itemize}
-						\item Descrição em linguagem de descrição de \textit{hardware} (.v) \\
-						\item Restrições de projeto (.sdc)\\
-						\item Descrição dos parasitas (.spef)
-					\end{itemize}
-					\item Biblioteca \textit{standard cell} realista \\
-					\item Ferramenta Industrial Synopsys $\textregistered$ \textit{PrimeTime}
+					\item \textbf{Técnicas que foram comparadas com o \textit{PrimeTime} $\textregistered$:}	\\
+						\begin{itemize}
+							\item Modelo da capacitância concentrada \textbf{SEM} atraso de interconexões;
+							\item Modelo da capacitância concentrada \textbf{COM} atraso de interconexões \textbf{E} degradação do \textit{slew};
+							\item Capacitância efetiva \textbf{COM} atraso de interconexões \textbf{E} degradação do \textit{slew}.
+						\end{itemize} \pause
+					\item \textbf{Infraestrutura Experimental: } \\
+						\begin{itemize}
+						\item 8 circuitos (608-982 mil portas lógicas): \\
+						\begin{itemize}
+							\item Descrição em linguagem de descrição de \textit{hardware} (.v); \\
+							\item Restrições de projeto (.sdc);\\
+							\item Descrição dos parasitas RC (.spef).
+						\end{itemize}
+						\item Biblioteca \textit{standard cell} realista; \\
+						\item Ferramenta Industrial Synopsys $\textregistered$ \textit{PrimeTime}.
+					\end{itemize} 
 				\end{itemize}
+				
 			\end{center}
 		\end{frame}			
 		
@@ -522,60 +578,53 @@
 			\frametitle{Validação do Modelo de Capacitância Concentrada}
 			\begin{center}
 				\includegraphics[width=\linewidth]{img/lumped_capacitance_vs_primetime.pdf} 
-				$$erro = 100 \times \frac{|a - b|}{\max(|a|, |b|)} $$
 			\end{center}
-
-			$a = $ ferramenta implementada \\
-			$b = $ primetime
+			\begin{columns}
+				\begin{column}{0.4\textwidth}
+					\begin{shaded}
+						$erro = 100 \times \frac{|a - b|}{\max(|a|, |b|)}$\\
+						\small{a = ferramenta implementada} \\
+						\small{b = primetime}
+					\end{shaded}
+				\end{column}
+				\begin{column}{0.6\textwidth}
+					\begin{itemize}
+						\item Erros próximos de \textbf{0\%};
+						\item Ferramenta cerca de \textbf{50x mais rápida}.
+					\end{itemize}
+				\end{column}
+			\end{columns}
 			
 			
 		\end{frame}
 		
+		
+		%PURI
 		\begin{frame}[t]
 			\frametitle{Validação Atraso das Interconexões}
 			\begin{center}
 				\includegraphics[width=\linewidth]{img/ceff_elmore_slew.pdf}
-				$$erro = 100 \times \frac{a - b}{ b } $$
 			\end{center}
-			
-			$a = $ ferramenta implementada \\
-			$b = $ primetime
+			\begin{columns}
+				\begin{column}{0.4\textwidth}
+					\begin{shaded}
+						$erro = 100 \times \frac{a - b}{ b } $ \\
+						\small{a = ferramenta implementada} \\
+						\small{b = primetime}
+					\end{shaded}
+				\end{column}
+				\begin{column}{0.6\textwidth}
+					\begin{itemize}
+						\item Média dos erros baixa (\textbf{-7.35\%} e \textbf{-4.28\%});
+						\item Cerca de \textbf{8x mais rápida};
+						\item Otimista.
+					\end{itemize}
+				\end{column}
+			\end{columns}			
 			
 		\end{frame}
 		
-		\begin{frame}[t]
-			\frametitle{Impacto da degradação do \textit{Slew}}
-			\begin{center}
-				\includegraphics[width=\linewidth]{img/ceff_elmore_no_slew.pdf}
-				$$erro = 100 \times \frac{a - b}{ b } $$
-			\end{center}
-			
-			$a = $ ferramenta implementada \\
-			$b = $ primetime
-			
-		\end{frame}
-		
-		\begin{frame}[t]
-			\frametitle{Relação $C_{eff} / C_{total}$ por \textit{leakage}}
-			\includegraphics[width=\linewidth]{img/ceff_ratio/ceff_ctotal_todos.pdf}
-		\end{frame}
-		
-		\begin{frame}
-			\frametitle{Relação $C_{eff} / C_{total}$: $pci\_bridge32\_slow$}
-			\pgfdeclareimage[width=\linewidth]{ratiopci}{img/experimentos/pcifull.pdf}
-			\pgfdeclareimage[width=\linewidth]{ratiopcizoom}{img/experimentos/pcizoom.pdf}
-			\pgfuseimage{ratiopci}<1>
-			\pgfuseimage{ratiopcizoom}<2>
-		\end{frame}
-		
-		\begin{frame}
-			\frametitle{Relação $C_{eff} / C_{total}$: $matrix\_mult\_slow$}
-			\pgfdeclareimage[width=\linewidth]{ratiomatrix}{img/experimentos/matrixfull.pdf}
-			\pgfdeclareimage[width=\linewidth]{ratiomatrixzoom}{img/experimentos/matrixzoom.pdf}
-			\pgfuseimage{ratiomatrix}<1>
-			\pgfuseimage{ratiomatrixzoom}<2>
-		\end{frame}
-
+		% ERRO POS
 		\begin{frame}[t]
 			\frametitle{Erros de \textit{arrival} nas saídas primárias: $pci\_bridge32\_slow$}
 			\begin{center}
@@ -589,7 +638,113 @@
 				\includegraphics[width=0.9\linewidth]{img/arrival_error/matrix_mult_puri.pdf}\\
 			\end{center}
 		\end{frame}
+		
+		%NO SLEW
+		\begin{frame}[t]
+			\frametitle{Impacto da degradação do \textit{Slew}}
+			\begin{center}
+				\includegraphics[width=\linewidth]{img/ceff_elmore_no_slew.pdf}
+			\end{center}
+			\begin{columns}
+				\begin{column}{0.4\textwidth}
+					\begin{shaded}
+						$erro = 100 \times \frac{a - b}{ b } $ \\
+						\small{a = ferramenta implementada} \\
+						\small{b = primetime}
+					\end{shaded}
+				\end{column}
+				\begin{column}{0.6\textwidth}
+					\begin{itemize}
+						\item Média dos erros \textbf{muito alta} (\textbf{-33.11\%} e \textbf{-19.99\%});
+						\item Muito otimista.
+					\end{itemize}
+				\end{column}
+			\end{columns}	
 			
+		\end{frame}
+		
+		
+		% CEFF / CTOTAL
+		\begin{frame}[t]
+			\frametitle{Relação $C_{eff} / C_{total}$ por \textit{leakage}}
+			\begin{center}
+				\includegraphics[width=\linewidth]{img/ceff_ratio/ceff_ctotal_todos.pdf}
+				\begin{columns}
+					\begin{column}{0.4 \textwidth}
+						\begin{shaded}
+							\scriptsize{\textbf{Min.:} Configuração de \textbf{menor} \textit{leakage} (menor $V_t$ e menor $W$);} \\
+							\scriptsize{\textbf{Normal:} Configuração padrão, lida diretamente do arquivo de descrição;}\\
+							\scriptsize{\textbf{Max.:} Configuração de \textbf{maior} \textit{leakage} (maior $V_t$ e maior $W$).}
+						\end{shaded}
+					\end{column}
+					\begin{column}{0.6 \textwidth}
+						\begin{itemize}
+							\item Maior \textit{leakage} $\to C_{eff} \approx C_{total}$.
+						\end{itemize}
+					\end{column}
+				\end{columns}						
+			\end{center}
+			
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Relação $C_{eff} / C_{total}$: $pci\_bridge32\_slow$}
+			\begin{center}
+				\pgfdeclareimage[width=0.9\linewidth]{ratiopci}{img/experimentos/pcifull.pdf}
+				\pgfdeclareimage[width=0.9\linewidth]{ratiopcizoom}{img/experimentos/pcizoom.pdf}
+				\pgfuseimage{ratiopci}<1>
+				\pgfuseimage{ratiopcizoom}<2>
+			\end{center}
+			
+			\only<2>
+			{
+				\begin{itemize}
+					\item Maior resistência $\to$ Maior \textit{shielding};
+				\end{itemize}
+			}
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Relação $C_{eff} / C_{total}$: $matrix\_mult\_slow$}
+			\begin{center}
+				\pgfdeclareimage[width=0.9\linewidth]{ratiomatrix}{img/experimentos/matrixfull.pdf}
+				\pgfdeclareimage[width=0.9\linewidth]{ratiomatrixzoom}{img/experimentos/matrixzoom.pdf}
+				\pgfuseimage{ratiomatrix}<1>
+				\pgfuseimage{ratiomatrixzoom}<2>
+			\end{center}
+			
+			\only<2>
+			{
+				\begin{itemize}
+					\item Maior resistência $\to$ Maior \textit{shielding};
+				\end{itemize}
+			}
+		\end{frame}
+
+		% LUMPED
+		\begin{frame}[t]
+			\frametitle{Validação Atraso das Interconexões}
+			\begin{center}
+				\includegraphics[width=\linewidth]{img/lump_elmore_slew.pdf}
+			\end{center}
+			\begin{columns}
+				\begin{column}{0.4\textwidth}
+					\begin{shaded}
+						$erro = 100 \times \frac{a - b}{ b } $ \\
+						\small{a = ferramenta implementada} \\
+						\small{b = primetime}
+					\end{shaded}
+				\end{column}
+				\begin{column}{0.6\textwidth}
+					\begin{itemize}
+						\item Média dos erros baixa (\textbf{10.52\%} e \textbf{4.63\%});
+						\item Cerca de \textbf{32x mais rápida};
+						\item Pessimista.
+					\end{itemize}
+				\end{column}
+			\end{columns}			
+			
+		\end{frame}
 		
 		
 		
@@ -599,13 +754,13 @@
 		\begin{frame}[t]
 		\frametitle{Conclusões}
 			\begin{itemize}
-				\item A desconsideração da degradação do \textit{slew} leva a uma estimativa muito otimista (mais de 30\% de erro);
+				\item A desconsideração da degradação do \textit{slew} pode levar a uma estimativa muito otimista (mais de 30\% de erro);
 				
 				\item Capacitância Efetiva $\to$ \textit{Resistive Shielding};
 				
-				\item A ferramenta implementada subestima o \textit{PrimeTime} em \textbf{4\%} com tempo de execução  cerca de \textbf{8x} menor;
+				\item A ferramenta implementada subestima o \textit{PrimeTime} em \textbf{4\%} na média, com tempo de execução  cerca de \textbf{8x} menor;
 				
-				\item $C_{eff} / C_{total}$ perto de $1$ nos circuitos da competição do ISPD 2013.
+				\item $C_{eff} / C_{total} \approx 1$ nos circuitos da competição do ISPD 2013.
 			\end{itemize}
 		\end{frame}
 	
@@ -616,7 +771,7 @@
 			\begin{itemize}
 				\item Investigação detalhada dos erros obtidos;
 				
-				\item Avaliação da técnica de STA em uma ferramenta de otimização (e. g., \textit{gate sizing});
+				\item Avaliação da técnica de STA em uma ferramenta de otimização (e.g., \textit{gate sizing});
 				
 				\item Utilização de circuitos e bibliotecas comerciais.
 			\end{itemize}

@@ -14,7 +14,7 @@
    height="716.31732"
    id="svg4613"
    version="1.1"
-   inkscape:version="0.48.3.1 r9886"
+   inkscape:version="0.48.4 r9939"
    sodipodi:docname="fluxograma_sta.pdf">
   <defs
      id="defs4615">
@@ -1476,12 +1476,12 @@
      inkscape:cx="696.1329"
      inkscape:cy="341.29159"
      inkscape:document-units="px"
-     inkscape:current-layer="g8233"
+     inkscape:current-layer="g9129"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1004"
-     inkscape:window-x="0"
-     inkscape:window-y="24"
+     inkscape:window-width="1366"
+     inkscape:window-height="706"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -1527,7 +1527,7 @@
            height="123.23861"
            x="31.31473"
            y="227.26317" /></flowRegion><flowPara
-         id="flowPara8310"></flowPara></flowRoot>    <g
+         id="flowPara8310" /></flowRoot>    <g
        id="g9055"
        transform="translate(55.152031,62.723747)">
       <path
@@ -1715,7 +1715,7 @@
    id="tspan9051"
    style="font-style:italic;fill:#074d22;fill-opacity:1;-inkscape-font-specification:Ubuntu Bold Italic">standard cell<tspan
    id="tspan9121"
-   style="font-style:normal;-inkscape-font-specification:Ubuntu Bold"></tspan></tspan></tspan><tspan
+   style="font-style:normal;-inkscape-font-specification:Ubuntu Bold" /></tspan></tspan><tspan
              id="tspan9123"
              sodipodi:role="line"
              x="399.29398"
@@ -1724,7 +1724,7 @@
    id="tspan9125"
    style="font-style:italic;fill:#074d22;fill-opacity:1;-inkscape-font-specification:Ubuntu Bold Italic"><tspan
    id="tspan9127"
-   style="font-style:normal;-inkscape-font-specification:Ubuntu Bold">(i.e., </tspan>gate sizing</tspan>)</tspan></text>
+   style="font-style:normal;-inkscape-font-specification:Ubuntu Bold">(e.g., </tspan>gate sizing</tspan>)</tspan></text>
       </g>
     </g>
     <text

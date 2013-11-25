@@ -1,0 +1,289 @@
+### 1 ###
+
+Boa tarde,
+Meu nome é Chrystian de Sousa Guth e eu vou apresentar meu trabalho entitulado "Análise de Timing Estática e a Avaliação do Impacto do Atraso das Interconexões em Circuitos Digitais".
+
+### 2 ###
+Segue aqui, o sumário da minha apresentação.
+
+Primeiramente uma breve introdução sobre a contextualizacao do meu trabalho.
+
+A seguir, serão apresentados alguns conceitos fundamentais.
+
+Na seção seguinte serão apresentados alguns trabalhos juntamente com a técnica escolhida para este presente trabalho.
+
+Logo após, será apresentada uma visão geral sobre a análise de timing, seguida dos experimentos realizados.
+
+Finalmente, serão apresentadas as conclusões e perspectivas de trabalhos futuros.
+
+### 3 ###
+Motivacao:
+
+Os diversos dispositivos eletrônicos atuais, como os smartphones, são constituidos de circuitos digitais.
+
+*click*
+
+A complexidade destes circuitos digitais *click*, e a necessidade de um tempo curto de entrega ao mercado faz com que estes circuitos adotem o fluxo de projeto standard cell.
+
+*click*
+
+Diversas restrições são estabelecidas ao projeto tal como a restrição de desempenho, que define a frequencia que o produto final poderá operar.
+
+*click* 
+
+### 4 ###
+O fluxo standard cell é utilizado nesses projetos. Ao decorrer do fluxo, algumas otimizações são realizadas (um exemplo, é o gate sizing, que visa minimizar o consumo de potência). Essas otimizações, podem alterar as topologias das interconexões, fazendo-se necessario, o uso de uma ferramenta de sta milhares de vezes durante o fluxo.
+
+### 5 ###
+Justificativa:
+ler bullets
+
+### 6 ###
+O objetivo principal do meu trabalho é *ler primeiro bullet*
+
+E os objetivos especificos são: *ler restante dos bullets* 
+
+### 7 ###
+Neste trabalho os modelos de atraso são os adotados em fluxo standard cell.
+
+As interconexões são modeladas de duas maneiras, a primeira, modelo de capacitancia concentrada. E a segunda, modelo rc concentrado.
+
+Este trabalho se limita em realizar a analise de timing de circuitos combinacionais, ou seja, os tempos de setup e hold dos registradores não são considerados.
+
+Transicao: Nos proximos slides, eu irei apresentar alguns conceitos necessarios para o entendimento das técnicas apresentadas neste trabalho.
+
+### 8 ###
+as informacoes temporais dos circuitos digitais sao obtidas a partir das informacoes das suas duas partes principais: as portas lógicas e as interconexoes.
+
+### 9 ###
+No caso das portas lógicas, as informações a seguir são relevantes:
+
+### 10 ###
+É chamado de driver a porta logica que está ligada na entrada de uma interconexao.
+
+Timing Arc é um conceito utilizado para relacionar um pino de entrada a um pino de saída de uma porta lógica, neste caso representado pela seta vermelha.
+
+O delay é o tempo que a saída  da porta lógica leva para transicionar, dado que ocorreu uma transicao na entrada. Geralmente, o tempo é medido da metade da transicao da entrada até a metade da transicao da saída.
+
+Se a transicao da saída é de 0 até vdd, o delay é chamado de rise delay. caso contrário, fall delay.
+
+*click*
+Outro conceito importante é o de slew. O slew é o tempo de transicao do sinal. ou seja, o tempo que ele leva para ir de um nivel lógico a outro. Geralmente, o tempo é medido de 20% até 80% da transição.
+
+### 11 ###
+Os delays e slews dos timing arcs no fluxo standard cell são funcoes do slew na entrada e da carga da saída. o delay pode ser obtido nas lookuptables, onde as linhas sao enderecadas pela carga e as colunas sao enderecadas pelo slew. Neste caso, o delay do timing arc é 52.05. 
+
+Caso os valores de slew ou carga não estejam presentes nos indices da tabela, uma interpolação linear é realizada, utilizando os indices mais próximos.
+
+### 12 ###
+Agora vou apresentar alguns conceitos relacionados às interconexoes.
+
+### 13 ###
+As interconexões tem seu impacto no circuito associado a tres fatores:
+*ler bullets*
+
+capacitancia efetiva
+
+Estes fatores serão abordados futuramente.
+
+Transição: Neste trabalho foram avaliados dois modelos de interconexão que serão apresentados a seguir:
+
+### 14 ###
+O modelo de capacitancia concentrada é muito utilizado nas etapas iniciais da sintese fisica.
+
+Neste modelo, a capacitancia total da interconexão é concentrado em um único capacitor.
+
+Como a interconexão não possui resistencias, a mesma não apresenta atraso também.
+
+### 15 ###
+O modelo rc concentrado é amplamente adotado em fluxo standard cell.
+
+Nele, cada segmento da interconexão corresponde a um valor de resistencia e capacitancia.
+
+E geralmente é representado na forma de uma árvore, ou seja:
+- Não possui loops resistivos
+- Cada nodo tem um resistor que o conecta com o nodo pai
+- TOdas as capacitancias são entre um nodo e o terra
+
+existem diversas técnicas para atraso baseadas neste modelo
+
+Transição: No próximo slide, eu apresentarei algumas das técnicas para cálculo das caracteristicas temporais das interconexões juntamente com a técnica implementada neste trabalho.
+
+### 16 ###
+Nesta tabela estão apresentadas algumas tecnicas.
+
+*click*
+
+Diversas técnicas podem ser combinadas a fim de se obter todas as informações temporais, como é o caso da técnica D2M e PERI que foram combinadas no trabalho de Khang et. al. (2013). Porém, para modelar o atraso dos drivers, o trabalho utilizou a abordagem de capacitancia concentrada, portanto não será comparado neste trabalho.
+
+*click*
+*click*
+
+Nas tres técnicas apresentadas, o atraso das interconexões é obtido calculando momentos de maior ordem. Tais técnicas possuem alto custo computacional, sendo inviaveis seus usos no contexto de uma ferramenta de otimizacao para fluxo standard cell.
+
+*click*
+*click*
+
+
+A técnica de Elmore, é amplamente utilizada para o atraso das interconexões, porque possui custo computacional baixo, porém, não considera o efeito conhecido como resistive shielding.
+
+A técnica ECM, calcula o atraso da interconexão, e a capacitancia efetiva. Porém, utiliza rampas para aproximar o slew de saída do driver. Como o driver de uma interconexão é uma porta cmos, com funcao de slew conhecida, no trabalho de PURI, o slew real do driver é utilizado para calcular a capacitancia efetiva.
+
+*click*
+### 17 ###
+Neste slide é mostrada uma visão geral da técnica do iterativa, que foi implementada neste trabalho, para calculo do atraso e degradacao do slew das interconexoes.
+
+### 18 ###
+O algoritmo é constituido por 4 passos principais
+
+- no primeiro passo, de inicialização, a capacitancia efetiva de cada nodo é iniciado com o valor de capacitancia total downstream.
+
+- no segundo passo, o slew é dregradado em todos os nodos, em ordem topologica até os nodos folha, que são os destinos da interconexao.
+
+Neste mesmo passo, o atraso de elmore é computado para cada nodo, utilizando os valores de capacitancia efetiva.
+
+- no terceiro passo, as capacitancias efetivas dos nodos são atualizados em ordem topologica reversa, com base do valor de slew em cada nodo.
+
+Se o slew na entrada convergiu para a precisao epsilon, o algoritmo termina. caso contrário, volta para o passo 2.
+
+Transição: A seguir vou apresentar o algoritmo aplicado na arvore RC apresentada neste slide.
+
+### 19 ###
+Passo de inicializacao.
+
+### 20 ###
+
+*click*
+
+o slew no nodo fonte, neste caso o nodo 0, é calculado diretamente, utilizando o modelo definido na biblioteca standard cell.
+
+*click*
+a seguir, o slew no nodo 1 é atualizado utilizando a equação apresentada, com base no slew previamente calculado no nodo 0.
+
+*click*
+O slew no nodo 3 é atualizado com a equação do slew, com base no slew calculado no nodo 1.
+
+*click*
+
+o slew no nodo 1 é utilizado também para atualizar o slew no nodo 2.
+
+*click*
+repetindo o procedimento para os demais nodos, será possível obter os slews nos destinos da interconexão, com base nos slews de seus pais.
+
+### 21 ###
+
+A partir deste momento, a degradacao do slew está definida em todos os nodos, e estes valores serão utilizados para atualizar os valores de capacitancia efetiva, em ordem topologica reversa.
+
+*click*
+
+A capacitancia efetiva nos nodos folhas da arvore são setados como o valor de capacitancia destes nodos.
+
+*click*
+
+no nodo 4, a capacitancia efetiva é setada com o valor de capacitancia do nodo, mais o valor de capacitancia do seu filho, no caso o 7, multiplicado por um fator de shielding, nesta equacao representado pela letra K. *click*
+
+No nodo 3 *click*, similarmente, a capacitancia efetiva é inicializada com o seu valor de capacitancia, somado com as capacitancias efetivas dos seus filhos, multiplicadas pelos fatores de shielding.
+
+*clicK*
+
+O processo é repetido para os próximos nodos, até que o valor de capacitancia efetiva no nodo fonte seja calculado.
+
+*click*
+
+A capacitanca efetiva vista pelo driver é exatamente a capacitancia efetiva no nodo fonte da interconexao. O slew pode ser recalculado com base neste valor. Caso ele convirja na precisao estipulada, o algoritmo termina.
+
+
+
+### 22 ###
+as tecnicas apresentadas até então são relativas as informacoes temporais locais das interconexoes e portas logicas. 
+
+*click*
+
+A analise de timing avalia o atraso global de um circuito, com base nesse atrasos locais.
+
+*click*
+
+### 23 ###
+O fluxo básico de uma ferramenta de sta é o seguinte.
+
+primeiramente, os arquivos de entrada são lidos. Esses arquivos correspondem a decriçao do circuito, restricoes de projeto, biblioteca de celulas, etc.
+
+A seguir, é gerado o grafo de timing. A implementacao do modelo de grafo tem grande impacto sobre a performance do algoritmo de analise de timing.
+
+A seguir, as informaçoes temporais são atualizadas, utilizando o algoritmo de sta. No contexto de uma ferramenta de otimizacao para fluxo standard cell, este ultimo passo é realizado quantas vezes for necessario.
+
+### 24 ###
+
+Considerando o circuito digital apresentado na figura, o grafo de timing é definido pelos pinos de entrada e saida das portas logicas, constituindo o conjunto dos vertices, e as interconexoes e timing arcs, correspondendo ao conjunto de arestas. Cada entrada e saída primaria é também representada como um vertice.
+
+*click*
+
+O grafo correspondente ao circuito é apresentado na figura de baixo.
+
+Os vertices sao armazenados como listas ordenadas topologicamente. Assim, o algoritmo de analise de timing corresponde apenas a uma iteracao em cada item da lista, calculando e propagando as informaçoes locais de timing.
+
+### 25 ###
+Apresentar a animação rapidamente
+
+Neste caso, o tempo de chegada na entrada do flip flop é maior que o periodo maximo, estipulado como restrição de desempenho, apresentando uma violação na mesma.
+
+Transicao: nos próximos slides serão apresentados os experimentos que foram realizados neste trabalho, a fim de validar as tecnicas estudadas.
+
+### 26 ###
+Neste slide é apresentada a metodologia utilizada para a validação da ferramenta implementada. Os resultados obtidos pela analise de timing foram comparados com os resultados fornecidos pela ferramenta industrial primetime utilizando a metrica do erro relativo.
+
+### 27 ###
+as técnicas que foram implementadas e comparadas são as seguintes
+
+*click*
+
+a infraestrutura experimental em que este trabalho se baseia são os 8 circuitos da competição de sizing do ISPD de 2013, bem como a biblioteca standard cell disponibilizada na competição, e a ferramenta industrial primetime.
+
+### 28 ###
+no primeiro experimento, a ferramenta implementada foi comparada com o primetime utilizando o modelo de capacitancia concentrada para modelar as interconexoes.
+
+os resultados mostram que a tecnica implementada apresenta resultados iguais aos do primetime com tempo de execuçao 50x menor na média.
+
+Transicao: os proximos experimentos foram realizados utilizando a tecnica de calculo de atraso e degradacao de slew apresentadas no trabalho
+
+
+### 29 ###
+Neste experimento, a analise de timing estatica foi comparada com o primetime utilizando a abordagem de capacitancia efetiva, atraso de interconexoes e degradacao de slew apresentadas neste trabalho.
+
+
+A ferramenta mostrou-se otimista em relação ao primetime, subestimando seus valores para atraso critico e slack negativo na media em 4.28% e 7.35% respectivamente.
+
+Em questao de tempo de execucao, a ferramenta se mostrou cerca de 8x mais rápida que o primetime na media.
+
+### 30 ###
+NEste experimento, os tempos de chegada nas saidas primarias do circuito foram obtidos e comparados com o primetime considerando tres configuracoes para o circuito.
+
+a primeira, representa a configuracao de menor consumo de leakage.
+
+a segunda, representa a configuracao padrao.
+
+e a terceira, a configuracao de maior leakage.
+
+*click*
+
+nos dois circuitos avaliados, a ferramenta apresenta erro medio proximo de 1% com baixo desvio padrão na configuracao de maior leakage.
+
+### 32 ###
+neste experimento foi avaliada a importancia do calculo da degradacao do slew noo contexto da analise de timing.
+
+a mesma tecnica para calculo da capacitancia efetiva e atraso das interconexoes foi utilizada, porem, o slew propagado nao sofre degradacao.
+
+o experimento apresentou resultados muito otimistas para TNS e caminho critico, com valores perto de 30% e 20% respectivamente.
+
+### 33 ###
+neste experimento foi calculado relacao media entre ceff e ctotal para os circuitos considerando as tres configuracoes de leakage apresentadas anterior mente. 
+
+este experimento mostra que nos circuitos da competicao de sizing do ispd, a relacao ceff/ctotal media é bem proxima de 1, e a medida que o leakage aumenta, essa relação fica mais proxima ainda de 1.
+
+os histogramas a seguir apresentam as relacoes ceff/ctotal divididas em tres categorias.
+
+
+
+
+
+ 

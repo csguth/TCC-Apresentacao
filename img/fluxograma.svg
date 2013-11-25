@@ -14,8 +14,8 @@
    height="1263.824"
    id="svg4613"
    version="1.1"
-   inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="fluxograma.svg">
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="fluxograma.pdf">
   <defs
      id="defs4615">
     <linearGradient
@@ -1445,15 +1445,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="291.96324"
-     inkscape:cy="549.21685"
+     inkscape:cx="477.20123"
+     inkscape:cy="883.02298"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1004"
-     inkscape:window-x="0"
-     inkscape:window-y="24"
+     inkscape:window-width="1366"
+     inkscape:window-height="706"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -1469,7 +1469,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1588,7 +1588,7 @@
          sodipodi:role="line"
          id="tspan7165"
          x="388.30524"
-         y="347.33746">Atraso de Elmore com valores de <tspan
+         y="347.33746">• Atraso de Elmore com valores de <tspan
    style="font-style:italic;text-align:center;text-anchor:middle;-inkscape-font-specification:Sans Italic"
    id="tspan7179">C</tspan><tspan
    style="font-size:16.76462173px;font-style:italic;text-align:center;text-anchor:middle;baseline-shift:sub;-inkscape-font-specification:Sans Italic"
@@ -1604,7 +1604,7 @@
          x="387.70612"
          id="tspan7171"
          sodipodi:role="line"
-         style="text-align:center;text-anchor:middle">Degradação do <tspan
+         style="text-align:center;text-anchor:middle">• Degradação do <tspan
    style="font-style:italic;text-align:center;text-anchor:middle;-inkscape-font-specification:Sans Italic"
    id="tspan7231">slew</tspan></tspan></text>
     <rect
@@ -1642,10 +1642,10 @@
          y="625.69794"
          x="390.42001"
          id="tspan7215"
-         sodipodi:role="line">Atualização da C<tspan
+         sodipodi:role="line">• Atualização da C<tspan
    style="font-size:65.00091553%;text-align:center;text-anchor:middle;baseline-shift:sub"
    id="tspan7229">eff</tspan> com base</tspan><tspan
-         y="657.93713"
+         y="658.01465"
          x="390.42001"
          sodipodi:role="line"
          id="tspan7235">no <tspan
