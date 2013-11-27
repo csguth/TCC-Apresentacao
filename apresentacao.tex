@@ -128,16 +128,15 @@
 			\end{frame}
 		
 			\begin{frame}[t]
-				\frametitle{Justificativa}
+				\frametitle{Justificativa e Objetivos}
+				\textbf{Justificativa:}
 				\begin{itemize}
 					\item Necessidade de avaliação das informações temporais em circuitos comerciais de grande porte;
 					\item Inexistência de ferramentas de STA em domínio público;
 					\item Alto custo das licenças das ferramentas industriais.
 				\end{itemize}
-			\end{frame}
-		
-			\begin{frame}[t]
-				\frametitle{Objetivos}
+				
+				\textbf{Objetivos:}
 				\begin{itemize}
 					\item Projeto, avaliação, validação e documentação de uma ferramenta de STA voltada para o fluxo \textit{standard cell;}
 					\begin{enumerate}
@@ -148,6 +147,7 @@
 					\end{enumerate}
 				\end{itemize}
 			\end{frame}
+		
 			
 			\begin{frame}[t]
 				\frametitle{Escopo}
@@ -235,9 +235,9 @@
 						
 					\end{figure}
 					\begin{itemize}
-						\item Capacitância ``Vista'' Pelo \textit{Driver};
-						\item Atraso da Interconexão;
-						\item Degradação do \textit{Slew}. 		
+						\item Capacitância ``vista'' pelo \textit{driver};
+						\item Atraso da interconexão;
+						\item Degradação do \textit{slew}. 		
 					\end{itemize}
 			\end{frame}
 			
@@ -286,36 +286,66 @@
 		\subsection*{}
 		\begin{frame}[t]
 		\frametitle{Trabalhos Correlatos}
-			\pgfdeclareimage[width=0.8\linewidth]{correlatos1}{img/correlatos1.pdf}
-			\pgfdeclareimage[width=0.8\linewidth]{correlatos2}{img/correlatos2.pdf}
-			\pgfdeclareimage[width=0.8\linewidth]{correlatos31}{img/correlatos31.pdf}
-			\pgfdeclareimage[width=0.8\linewidth]{correlatos3}{img/correlatos3.pdf}
-			\pgfdeclareimage[width=0.8\linewidth]{correlatos41}{img/correlatos41.pdf}
-			\pgfdeclareimage[width=0.8\linewidth]{correlatos4}{img/correlatos4.pdf}
-			%\pgfdeclareimage[width=0.8\linewidth]{correlatos51}{img/correlatos51.pdf}
-			\pgfdeclareimage[width=0.8\linewidth]{correlatos5}{img/correlatos5.pdf}
-
-
-			\begin{center}
+		
+		\begin{columns}[t]
+			\begin{column}{.6\linewidth}
+				\pgfdeclareimage[width=\linewidth]{correlatos1}{img/correlatos1.pdf}
+				\pgfdeclareimage[width=\linewidth]{correlatos2}{img/correlatos2.pdf}
+				\pgfdeclareimage[width=\linewidth]{correlatos3}{img/correlatos3.pdf}
+				\pgfdeclareimage[width=\linewidth]{correlatos4}{img/correlatos4.pdf}
+				\pgfdeclareimage[width=\linewidth]{correlatos5}{img/correlatos5.pdf}
+	
+	
 				\pgfuseimage{correlatos1}<1>
 				\pgfuseimage{correlatos2}<2>
-				\pgfuseimage{correlatos31}<3>
-				\pgfuseimage{correlatos3}<4>
-				\pgfuseimage{correlatos41}<5>
-				\pgfuseimage{correlatos4}<6>
-				%\pgfuseimage{correlatos51}<7>
-				\pgfuseimage{correlatos5}<7>
-			\end{center}
+				\pgfuseimage{correlatos3}<3>
+				\pgfuseimage{correlatos4}<4>
+				\pgfuseimage{correlatos5}<5>
+			\end{column}
+			
+			\begin{column}{.4\linewidth}
+				\only<2>
+				{
+					\textbf{Kahng et. al. (2013)}
+					\begin{itemize}
+						\item Não utiliza capacitância efetiva;
+						\item Erros superiores aos da técnica implementada neste trabalho.
+					\end{itemize}
+				}
+				\only<3>
+				{
+					\begin{itemize}
+						\item Modelos de alta ordem;
+						\item Alto custo computacional.
+					\end{itemize}
+				}
+				\only<4>
+				{
+					\begin{itemize}
+						\item \textbf{Elmore Delay:} não considera o efeito de \textit{resistive shielding};
+						\item \textbf{ECM:} aproxima o \textit{slew} do \textit{driver} da interconexão para obter o valor de capacitância efetiva.
+					\end{itemize}
+				}
+				
+				\only<5>
+				{
+					\begin{itemize}
+						\item Técnica escolhida neste trabalho;
+						\item Obtém o valor de \textit{slew} do \textit{driver} e capacitância efetiva iterativamente.
+					\end{itemize}
+				}
+			\end{column}
+			
+			
+			
+		\end{columns}
+		
 			
 		\end{frame}
 	
 	\section{Técnica Implementada}
 	
 		\subsection*{Visão Geral}
-		\begin{frame}[t]
-			\frametitle{Técnica Implementada}
-			\includegraphics[width=\textwidth]{img/imagem_puri.pdf} 
-		\end{frame}
 		
 		\begin{frame}[t]
 			\begin{center}
@@ -353,7 +383,6 @@
 
 		\begin{frame}[t]
 			\frametitle{Degradação dos \textit{Slews}}
-			\pgfdeclareimage[width=\linewidth]{slew00}{img/inicializacao1.pdf}
 			\pgfdeclareimage[width=\linewidth]{slew0}{img/slew0.pdf}
 			\pgfdeclareimage[width=\linewidth]{slew1}{img/slew1.pdf}
 			\pgfdeclareimage[width=\linewidth]{slew2}{img/slew2.pdf}
@@ -361,33 +390,32 @@
 			\pgfdeclareimage[width=\linewidth]{slew3}{img/slew3.pdf}
 			
 
-			\pgfuseimage{slew00}<1>
-			\pgfuseimage{slew0}<2>
-			\pgfuseimage{slew1}<3>
-			\pgfuseimage{slew2}<4>
-			\pgfuseimage{slew22}<5>
-			\pgfuseimage{slew3}<6>
+			\pgfuseimage{slew0}<1>
+			\pgfuseimage{slew1}<2>
+			\pgfuseimage{slew2}<3>
+			\pgfuseimage{slew22}<4>
+			\pgfuseimage{slew3}<5>
 			
 			\vspace{0.5cm}
 
 			
-			\only<2>{
+			\only<1>{
 				$\textcolor{azul}{slew_0} \gets slew\_biblioteca(C_{ceff_0})$			
 			}
 			
-			\only<3>{
+			\only<2>{
 				$\textcolor{vermelho}{slew_1} \gets \frac{\textcolor{azul}{slew_0}}{1 - x(1 - e^{-\frac{1}{x}})}$\\\vspace{0.25cm}
 				$x = \frac{R_1 C_{eff_1}}{\textcolor{azul}{slew_0}}$
 			}
-			\only<4>{
+			\only<3>{
 				$\textcolor{vermelho}{slew_3} \gets \frac{\textcolor{azul}{slew_1}}{1 - x(1 - e^{-\frac{1}{x}})}$\\\vspace{0.25cm}
 				$x = \frac{R_3 C_{eff_3}}{\textcolor{azul}{slew_1}}$
 			}
-			\only<5>{
+			\only<4>{
 				$\textcolor{vermelho}{slew_2} \gets \frac{\textcolor{azul}{slew_1}}{1 - x(1 - e^{-\frac{1}{x}})}$\\\vspace{0.25cm}
 				$x = \frac{R_2 C_{eff_2}}{\textcolor{azul}{slew_1}}$
 			}
-			\only<6>{
+			\only<5>{
 				\textbf{[...]}\\
 				\begin{columns}[t]
 			
@@ -412,7 +440,6 @@
 		\begin{frame}[t]
 			\frametitle{Atualização da Capacitância Efetiva}
 %			\begin{minipage}{\linewidth}
-			\pgfdeclareimage[width=\linewidth]{inicializacao1}{img/inicializacao1.pdf}
 			\pgfdeclareimage[width=\linewidth]{inicializacao2}{img/inicializacao2.pdf}
 			\pgfdeclareimage[width=\linewidth]{inicializacao3}{img/inicializacao3.pdf}
 			\pgfdeclareimage[width=\linewidth]{inicializacao4}{img/inicializacao4.pdf}
@@ -421,40 +448,39 @@
 			\pgfdeclareimage[width=\linewidth]{inicializacao7}{img/inicializacao7.pdf}
 
 
-			\pgfuseimage{inicializacao1}<1>
-			\pgfuseimage{inicializacao2}<2>
-			\pgfuseimage{inicializacao3}<3>
-			\pgfuseimage{inicializacao4}<4>
-			\pgfuseimage{inicializacao5}<5>
-			\pgfuseimage{inicializacao6}<6>
-			\pgfuseimage{inicializacao7}<7>
+			\pgfuseimage{inicializacao2}<1>
+			\pgfuseimage{inicializacao3}<2>
+			\pgfuseimage{inicializacao4}<3>
+			\pgfuseimage{inicializacao5}<4>
+			\pgfuseimage{inicializacao6}<5>
+			\pgfuseimage{inicializacao7}<6>
 			
 			\vspace{0.5cm}
 				
 %			\end{minipage}
-			\only<2>{
+			\only<1>{
 				$C_{eff_7} \gets \textcolor{verde}{C_7}$\\
 				$C_{eff_6} \gets \textcolor{verde}{C_6}$\\
 				$C_{eff_5} \gets \textcolor{verde}{C_5}$
 			}
 			
 					
-			\only<3-4>{
+			\only<2-3>{
 				$C_{eff_4} \gets \textcolor{verde}{C_4}$
-				\only<4>{
+				\only<3>{
 					$\textcolor{azul}{+ C_{eff_7} \times K_7}$ \\\vspace{0.25cm}
 					$K_7 = 1 - \frac{2 R_7 C_{eff_7}}{slew_4}(1 - e^{-\frac{slew_4}{2 R_7 C_{eff_7}}})$
 				}
 			}
-			\only<5-6>{
+			\only<4-5>{
 				$C_{eff_3} \gets \textcolor{verde}{C_3}$
-				\only<6>{
+				\only<5>{
 					$\textcolor{azul}{+ C_{eff_5} \times K_5 + C_{eff_6} \times K_6}$ \\\vspace{0.25cm}
 					$K_5 = 1 - \frac{2 R_5 C_{eff_5}}{slew_3}(1 - e^{-\frac{slew_3}{2 R_5 C_{eff_5}}})$\\
 					$K_6 = 1 - \frac{2 R_6 C_{eff_6}}{slew_3}(1 - e^{-\frac{slew_3}{2 R_6 C_{eff_6}}})$
 				}
 			}
-			\only<7>{
+			\only<6>{
 				\textbf{[...]} \\\vspace{0.25cm}
 				$C_{eff_0} \gets \textcolor{verde}{C_0} \textcolor{azul}{+ C_{eff_1} \times K_1}$\\\vspace{0.25cm}
 				$K_1 = 1 - \frac{2 R_1 C_{eff_1}}{slew_0}(1 - e^{-\frac{slew_0}{2 R_1 C_{eff_1}}})$
@@ -489,7 +515,7 @@
 		\begin{frame}[t]
 			\frametitle{Grafo de \textit{Timing}}
 			\begin{center}
-				\includegraphics[width=0.7\linewidth]{img/exemplo_circuito_simple.pdf} \\\vspace{0.5cm} \pause
+				\includegraphics[width=0.7\linewidth]{img/exemplo_circuito_simple.pdf} \\\vspace{0.5cm} 
 				\includegraphics[width=0.8\linewidth]{img/grafo_lista_nivel_logico.pdf}
 			\end{center}
 		\end{frame}
@@ -551,22 +577,22 @@
 			\frametitle{Metodologia e Infraestrutura Experimental}
 			\begin{center}
 				\begin{itemize}
-					\item \textbf{Técnicas que foram comparadas com o \textit{PrimeTime} $\textregistered$:}	\\
+					\item \textbf{Técnicas que foram comparadas ferramenta industrial:}	\\
 						\begin{itemize}
-							\item Modelo da capacitância concentrada \textbf{SEM} atraso de interconexões;
-							\item Modelo da capacitância concentrada \textbf{COM} atraso de interconexões \textbf{E} degradação do \textit{slew};
-							\item Capacitância efetiva \textbf{COM} atraso de interconexões \textbf{E} degradação do \textit{slew}.
+							\item Capacitância concentrada \textbf{SEM} atraso de interconexões;
+							\item Capacitância efetiva \textbf{COM} atraso de interconexões \textbf{E} degradação do \textit{slew}.							
+							\item Capacitância concentrada \textbf{COM} atraso de Elmore para interconexões \textbf{E} degradação do \textit{slew};
+							
 						\end{itemize} \pause
 					\item \textbf{Infraestrutura Experimental: } \\
 						\begin{itemize}
-						\item 8 circuitos (608-982 mil portas lógicas): \\
+						\item 8 circuitos (608-982k portas lógicas): \\
 						\begin{itemize}
 							\item Descrição em linguagem de descrição de \textit{hardware} (.v); \\
 							\item Restrições de projeto (.sdc);\\
 							\item Descrição dos parasitas RC (.spef).
 						\end{itemize}
 						\item Biblioteca \textit{standard cell} realista; \\
-						\item Ferramenta Industrial Synopsys $\textregistered$ \textit{PrimeTime}.
 					\end{itemize} 
 				\end{itemize}
 				
@@ -576,21 +602,24 @@
 		\subsection*{Experimentos}
 		\begin{frame}[t]
 			\frametitle{Validação do Modelo de Capacitância Concentrada}
+			\vspace{-.5cm}
 			\begin{center}
-				\includegraphics[width=\linewidth]{img/lumped_capacitance_vs_primetime.pdf} 
+				\includegraphics[width=0.9\linewidth]{img/lumped_capacitance_vs_primetime.pdf} 
 			\end{center}
+			\vspace{-.5cm}
 			\begin{columns}
 				\begin{column}{0.4\textwidth}
 					\begin{shaded}
-						$erro = 100 \times \frac{|a - b|}{\max(|a|, |b|)}$\\
+						$erro = 100 \times \frac{a - b}{ b } $ \\
 						\small{a = ferramenta implementada} \\
 						\small{b = primetime}
 					\end{shaded}
 				\end{column}
 				\begin{column}{0.6\textwidth}
 					\begin{itemize}
-						\item Erros próximos de \textbf{0\%};
-						\item Ferramenta cerca de \textbf{50x mais rápida}.
+						\item \textbf{0\%} de erro;
+						\item Ferramenta cerca de \textbf{50x mais rápida} nos 7 primeiros circuitos;
+						\item \textbf{6.19x mais rápida} no netcard.
 					\end{itemize}
 				\end{column}
 			\end{columns}
@@ -601,10 +630,12 @@
 		
 		%PURI
 		\begin{frame}[t]
-			\frametitle{Validação Atraso das Interconexões}
+			\frametitle{$C_{eff}$ + atraso da interconexão + degradação do \textit{slew}}
+			\vspace{-.5cm}
 			\begin{center}
-				\includegraphics[width=\linewidth]{img/ceff_elmore_slew.pdf}
+				\includegraphics[width=0.9\linewidth]{img/ceff_elmore_slew.pdf}
 			\end{center}
+			\vspace{-.5cm}
 			\begin{columns}
 				\begin{column}{0.4\textwidth}
 					\begin{shaded}
@@ -616,8 +647,8 @@
 				\begin{column}{0.6\textwidth}
 					\begin{itemize}
 						\item Média dos erros baixa (\textbf{-7.35\%} e \textbf{-4.28\%});
+						\item Resultados otimistas.
 						\item Cerca de \textbf{8x mais rápida};
-						\item Otimista.
 					\end{itemize}
 				\end{column}
 			\end{columns}			
@@ -625,15 +656,21 @@
 		\end{frame}
 		
 		% ERRO POS
+%		\begin{frame}[t]
+%			\frametitle{Erros de \textit{arrival} nas saídas primárias}
+%			\begin{itemize}
+%				\item Circuito $pci\_bridge32\_slow$ (31k portas lógicas);
+%			\end{itemize}
+%			\begin{center}
+%				\includegraphics[width=0.9\linewidth]{img/arrival_error/pci_bridge32_puri.pdf}\\
+%			\end{center}
+%		\end{frame}		
+%		
 		\begin{frame}[t]
-			\frametitle{Erros de \textit{arrival} nas saídas primárias: $pci\_bridge32\_slow$}
-			\begin{center}
-				\includegraphics[width=0.9\linewidth]{img/arrival_error/pci_bridge32_puri.pdf}\\
-			\end{center}
-		\end{frame}		
-		
-		\begin{frame}[t]
-			\frametitle{Erros de \textit{arrival} nas saídas primárias: $matrix\_mult\_slow$}
+			\frametitle{Erros de \textit{arrival} nas saídas primárias}
+			\begin{itemize}
+				\item Circuito $matrix\_mult\_slow$ (156k portas lógicas);
+			\end{itemize}
 			\begin{center}
 				\includegraphics[width=0.9\linewidth]{img/arrival_error/matrix_mult_puri.pdf}\\
 			\end{center}
@@ -641,10 +678,12 @@
 		
 		%NO SLEW
 		\begin{frame}[t]
-			\frametitle{Impacto da degradação do \textit{Slew}}
+			\frametitle{Impacto da degradação do \textit{slew}}
+			\vspace{-.5cm}
 			\begin{center}
 				\includegraphics[width=\linewidth]{img/ceff_elmore_no_slew.pdf}
 			\end{center}
+			\vspace{-.5cm}
 			\begin{columns}
 				\begin{column}{0.4\textwidth}
 					\begin{shaded}
@@ -655,8 +694,8 @@
 				\end{column}
 				\begin{column}{0.6\textwidth}
 					\begin{itemize}
-						\item Média dos erros \textbf{muito alta} (\textbf{-33.11\%} e \textbf{-19.99\%});
-						\item Muito otimista.
+						\item Média dos erros \textbf{muito} alta (\textbf{-33.11\%} e \textbf{-19.99\%});
+						\item Resultados \textbf{muito} otimistas.
 					\end{itemize}
 				\end{column}
 			\end{columns}	
@@ -666,20 +705,20 @@
 		
 		% CEFF / CTOTAL
 		\begin{frame}[t]
-			\frametitle{Relação $C_{eff} / C_{total}$ por \textit{leakage}}
+			\frametitle{Relação $C_{eff} / C_{total}$}
 			\begin{center}
-				\includegraphics[width=\linewidth]{img/ceff_ratio/ceff_ctotal_todos.pdf}
+				\includegraphics[width=0.9\linewidth]{img/ceff_ratio/ceff_ctotal_todos.pdf}
 				\begin{columns}
 					\begin{column}{0.4 \textwidth}
 						\begin{shaded}
-							\scriptsize{\textbf{Min.:} Configuração de \textbf{menor} \textit{leakage} (menor $V_t$ e menor $W$);} \\
-							\scriptsize{\textbf{Normal:} Configuração padrão, lida diretamente do arquivo de descrição;}\\
-							\scriptsize{\textbf{Max.:} Configuração de \textbf{maior} \textit{leakage} (maior $V_t$ e maior $W$).}
+							\scriptsize{\textbf{Min.:} Portas com menor desempenho;} \\
+							\scriptsize{\textbf{Normal:} Configuração padrão;}\\
+							\scriptsize{\textbf{Max.:} Portas com maior desempenho.}
 						\end{shaded}
 					\end{column}
 					\begin{column}{0.6 \textwidth}
 						\begin{itemize}
-							\item Maior \textit{leakage} $\to C_{eff} \approx C_{total}$.
+							\item Maior desempenho $\to C_{eff} \approx C_{total}$.
 						\end{itemize}
 					\end{column}
 				\end{columns}						
@@ -687,25 +726,28 @@
 			
 		\end{frame}
 		
-		\begin{frame}
-			\frametitle{Relação $C_{eff} / C_{total}$: $pci\_bridge32\_slow$}
-			\begin{center}
-				\pgfdeclareimage[width=0.9\linewidth]{ratiopci}{img/experimentos/pcifull.pdf}
-				\pgfdeclareimage[width=0.9\linewidth]{ratiopcizoom}{img/experimentos/pcizoom.pdf}
-				\pgfuseimage{ratiopci}<1>
-				\pgfuseimage{ratiopcizoom}<2>
-			\end{center}
-			
-			\only<2>
-			{
-				\begin{itemize}
-					\item Maior resistência $\to$ Maior \textit{shielding};
-				\end{itemize}
-			}
-		\end{frame}
+%		\begin{frame}
+%			\frametitle{Relação $C_{eff} / C_{total}$: $pci\_bridge32\_slow$}
+%			\begin{center}
+%				\pgfdeclareimage[width=0.9\linewidth]{ratiopci}{img/experimentos/pcifull.pdf}
+%				\pgfdeclareimage[width=0.9\linewidth]{ratiopcizoom}{img/experimentos/pcizoom.pdf}
+%				\pgfuseimage{ratiopci}<1>
+%				\pgfuseimage{ratiopcizoom}<2>
+%			\end{center}
+%			
+%			\only<2>
+%			{
+%				\begin{itemize}
+%					\item Maior resistência $\to$ Maior \textit{shielding};
+%				\end{itemize}
+%			}
+%		\end{frame}
 		
 		\begin{frame}
-			\frametitle{Relação $C_{eff} / C_{total}$: $matrix\_mult\_slow$}
+			\frametitle{Relação $C_{eff} / C_{total}$}
+			\begin{itemize}
+				\item Circuito $matrix\_mult\_slow$ (156k portas lógicas).
+			\end{itemize}
 			\begin{center}
 				\pgfdeclareimage[width=0.9\linewidth]{ratiomatrix}{img/experimentos/matrixfull.pdf}
 				\pgfdeclareimage[width=0.9\linewidth]{ratiomatrixzoom}{img/experimentos/matrixzoom.pdf}
@@ -723,10 +765,12 @@
 
 		% LUMPED
 		\begin{frame}[t]
-			\frametitle{Validação Atraso das Interconexões}
+			\frametitle{$C_{total}$ + atraso da interconexão + degradação do \textit{slew}}
+			\vspace{-.5cm}
 			\begin{center}
 				\includegraphics[width=\linewidth]{img/lump_elmore_slew.pdf}
 			\end{center}
+			\vspace{-.5cm}
 			\begin{columns}
 				\begin{column}{0.4\textwidth}
 					\begin{shaded}
@@ -738,8 +782,8 @@
 				\begin{column}{0.6\textwidth}
 					\begin{itemize}
 						\item Média dos erros baixa (\textbf{10.52\%} e \textbf{4.63\%});
+						\item Resultados pessimistas;
 						\item Cerca de \textbf{32x mais rápida};
-						\item Pessimista.
 					\end{itemize}
 				\end{column}
 			\end{columns}			
@@ -764,18 +808,18 @@
 			\end{itemize}
 		\end{frame}
 	
-	\section{Trabalhos Futuros}
-		
-		\begin{frame}[t]
-		\frametitle{Trabalhos Futuros}
-			\begin{itemize}
-				\item Investigação detalhada dos erros obtidos;
-				
-				\item Avaliação da técnica de STA em uma ferramenta de otimização (e.g., \textit{gate sizing});
-				
-				\item Utilização de circuitos e bibliotecas comerciais.
-			\end{itemize}
-		\end{frame}
+%	\section{Trabalhos Futuros}
+%		
+%		\begin{frame}[t]
+%		\frametitle{Trabalhos Futuros}
+%			\begin{itemize}
+%				\item Investigação detalhada dos erros obtidos;
+%				
+%				\item Avaliação da técnica de STA em uma ferramenta de otimização (e.g., \textit{gate sizing});
+%				
+%				\item Utilização de circuitos e bibliotecas comerciais.
+%			\end{itemize}
+%		\end{frame}
 		
 	\section*{}
 	\frame{\titlepage}
