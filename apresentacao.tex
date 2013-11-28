@@ -5,7 +5,6 @@
 \setbeamertemplate{footline}[frame number]
 \setbeamertemplate{section in toc}[sections numbered]
 
-
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -18,13 +17,10 @@
 \usepackage{subfigure}
 \usepackage{framed}
 
-
-
 \definecolor{azul}{rgb}{0.03,0.46,0.69}
 \definecolor{verde}{rgb}{0,1,0}
 \definecolor{vermelho}{rgb}{0.56,0.05,0.09}
 \definecolor{black}{HTML}{000000}
-
 
 \definecolor{vermelho tema}{HTML}{8F0F17}
 \definecolor{amarelo tema}{HTML}{FFF919}
@@ -132,11 +128,12 @@
 				\frametitle{Justificativa e Objetivos}
 				\textbf{Justificativa:}
 				\begin{itemize}
-					\item Necessidade de avaliação das informações temporais em circuitos comerciais de grande porte;
+					\item Não se encontra na literatura uma validação extensa de uma técnica para cálculo do atraso de interconexões em circuitos de grande porte;					
 					\item Inexistência de ferramentas de STA em domínio público;
 					\item Alto custo das licenças das ferramentas industriais.
+					
 				\end{itemize}
-				
+				\pause
 				\textbf{Objetivos:}
 				\begin{itemize}
 					\item Projeto, avaliação, validação e documentação de uma ferramenta de STA voltada para o fluxo \textit{standard cell;}
@@ -405,8 +402,17 @@
 			}
 			
 			\only<2>{
-				$\textcolor{vermelho}{slew_1} \gets \frac{\textcolor{azul}{slew_0}}{1 - x(1 - e^{-\frac{1}{x}})}$\\\vspace{0.25cm}
-				$x = \frac{R_1 C_{eff_1}}{\textcolor{azul}{slew_0}}$
+				\begin{columns}[t]
+					\begin{column} {.35 \textwidth}
+						$\textcolor{vermelho}{slew_1} \gets \frac{\textcolor{azul}{slew_0}}{1 - x(1 - e^{-\frac{1}{x}})}$\\\vspace{0.25cm}
+						$x = \frac{R_1 C_{eff_1}}{\textcolor{azul}{slew_0}}$
+					\end{column}
+					\begin{column} {.65 \textwidth}
+						\begin{itemize}
+							\item Resposta ao impulso do nodo 1 em relação ao nodo 0;
+						\end{itemize}
+					\end{column}
+				\end{columns}
 			}
 			\only<3>{
 				$\textcolor{vermelho}{slew_3} \gets \frac{\textcolor{azul}{slew_1}}{1 - x(1 - e^{-\frac{1}{x}})}$\\\vspace{0.25cm}
@@ -467,11 +473,21 @@
 			
 					
 			\only<2-3>{
-				$C_{eff_4} \gets \textcolor{verde}{C_4}$
-				\only<3>{
-					$\textcolor{azul}{+ C_{eff_7} \times K_7}$ \\\vspace{0.25cm}
-					$K_7 = 1 - \frac{2 R_7 C_{eff_7}}{slew_4}(1 - e^{-\frac{slew_4}{2 R_7 C_{eff_7}}})$
-				}
+				\begin{columns}
+					\begin{column}{.4\linewidth}
+						$C_{eff_4} \gets \textcolor{verde}{C_4}$
+						\only<3>{
+							$\textcolor{azul}{+ C_{eff_7} \times K_7}$ \\\vspace{0.25cm}
+							$K_7 = 1 - \frac{2 R_7 C_{eff_7}}{slew_4}(1 - e^{-\frac{slew_4}{2 R_7 C_{eff_7}}})$
+						}
+					\end{column}
+					\begin{column}{.6\linewidth}
+						\begin{itemize}
+							\item $K_7 \in [0, 1]$;
+							\item $\uparrow K_7 \downarrow$ Resistive Shielding.
+						\end{itemize}
+					\end{column}
+				\end{columns}
 			}
 			\only<4-5>{
 				$C_{eff_3} \gets \textcolor{verde}{C_3}$
@@ -647,7 +663,7 @@
 				\end{column}
 				\begin{column}{0.6\textwidth}
 					\begin{itemize}
-						\item Média dos erros baixa (\textbf{-7.35\%} e \textbf{-4.28\%});
+						\item Média dos erros \textbf{baixa} (\textbf{-8.52\%} e \textbf{-4.16\%});
 						\item Resultados otimistas.
 						\item Cerca de \textbf{8x mais rápida};
 					\end{itemize}
@@ -673,8 +689,23 @@
 				\item Circuito $matrix\_mult\_slow$ (156k portas lógicas);
 			\end{itemize}
 			\begin{center}
-				\includegraphics[width=0.9\linewidth]{img/arrival_error/matrix_mult_puri.pdf}\\
+				\includegraphics[width=0.8\linewidth]{img/arrival_error/matrix_mult_puri.pdf}\\
 			\end{center}
+			\vspace{-.6cm}
+			\begin{columns}
+					\begin{column}{0.4 \textwidth}
+						\begin{shaded}
+							\scriptsize{\textbf{Min.:} Portas com menor desempenho;} \\
+							\scriptsize{\textbf{Normal:} Configuração padrão;}\\
+							\scriptsize{\textbf{Max.:} Portas com maior desempenho.}
+						\end{shaded}
+					\end{column}
+					\begin{column}{0.6 \textwidth}
+						\begin{itemize}
+							\item Maior desempenho $\to C_{eff} \approx C_{total}$.
+						\end{itemize}
+					\end{column}
+				\end{columns}			
 		\end{frame}
 		
 		%NO SLEW
@@ -695,7 +726,7 @@
 				\end{column}
 				\begin{column}{0.6\textwidth}
 					\begin{itemize}
-						\item Média dos erros \textbf{muito} alta (\textbf{-33.11\%} e \textbf{-19.99\%});
+						\item Média dos erros \textbf{muito} alta (\textbf{-40.79\%} e \textbf{-19.41\%});
 						\item Resultados \textbf{muito} otimistas.
 					\end{itemize}
 				\end{column}
@@ -751,17 +782,12 @@
 			\end{itemize}
 			\begin{center}
 				\pgfdeclareimage[width=0.9\linewidth]{ratiomatrix}{img/experimentos/matrixfull.pdf}
-				\pgfdeclareimage[width=0.9\linewidth]{ratiomatrixzoom}{img/experimentos/matrixzoom.pdf}
 				\pgfuseimage{ratiomatrix}<1>
-				\pgfuseimage{ratiomatrixzoom}<2>
 			\end{center}
-			
-			\only<2>
-			{
-				\begin{itemize}
-					\item Maior resistência $\to$ Maior \textit{shielding};
-				\end{itemize}
-			}
+
+			\begin{itemize}
+				\item Maior resistência $\to$ Maior \textit{shielding};
+			\end{itemize}
 		\end{frame}
 
 		% LUMPED
@@ -771,7 +797,7 @@
 			\begin{center}
 				\includegraphics[width=\linewidth]{img/lump_elmore_slew.pdf}
 			\end{center}
-			\vspace{-.5cm}
+%			\vspace{-.5cm}
 			\begin{columns}
 				\begin{column}{0.4\textwidth}
 					\begin{shaded}
@@ -781,11 +807,15 @@
 					\end{shaded}
 				\end{column}
 				\begin{column}{0.6\textwidth}
-					\begin{itemize}
-						\item Média dos erros baixa (\textbf{10.52\%} e \textbf{4.63\%});
-						\item Resultados pessimistas;
-						\item Cerca de \textbf{32x mais rápida};
-					\end{itemize}
+					\begin{small}
+					
+						\begin{itemize}
+							\item Erro \textbf{baixo} para TNS nos 7 primeiros circuitos (\textbf{10.52\%});
+							\item Erro \textbf{baixo} para \textit{critical path} (\textbf{5.11\%});
+							\item Resultados pessimistas;
+							\item Cerca de \textbf{32x mais rápida};
+						\end{itemize}
+					\end{small}
 				\end{column}
 			\end{columns}			
 			
@@ -799,13 +829,17 @@
 		\begin{frame}[t]
 		\frametitle{Conclusões}
 			\begin{itemize}
-				\item A desconsideração da degradação do \textit{slew} pode levar a uma estimativa muito otimista (mais de 30\% de erro);
+				\item Foram avaliados os impactos do atraso das interconexões e degradação dos \textit{slews} no contexto de uma ferramenta de análise de \textit{timing} estática;			
+			
+				\item A desconsideração da degradação do \textit{slew} pode levar a uma estimativa muito otimista (mais de 40\% de erro);
 				
 				\item Capacitância Efetiva $\to$ \textit{Resistive Shielding};
 				
-				\item A ferramenta implementada subestima o \textit{PrimeTime} em \textbf{4\%} na média, com tempo de execução  cerca de \textbf{8x} menor;
+				\item A ferramenta implementada é otimista em relação ao \textit{PrimeTime} em \textbf{4.16\%} na média, com tempo de execução  cerca de \textbf{8x} menor;
 				
 				\item $C_{eff} / C_{total} \approx 1$ nos circuitos da competição do ISPD 2013.
+				
+				\item Abordagem de capacitância concentrada + Elmore + Degradação do \textit{slew} é \textbf{pessimista} em relação ao \textit{PrimeTime} em \textbf{5.11\%} na média, com tempo de execução cerca de \textbf{32x} menor.
 			\end{itemize}
 		\end{frame}
 	
