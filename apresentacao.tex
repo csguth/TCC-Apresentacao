@@ -261,8 +261,8 @@
 					\begin{itemize}
 						\item Amplamente utilizado nas primeiras etapas da síntese física;
 						\item Modelo utilizado quando a resistência da interconexão é desprezível;
-						\item Concentra-se toda a capacitância da interconexão em um único capacitor;
 						\item O atraso da interconexão é desconsiderado.
+						\item Concentra-se toda a capacitância da interconexão em um único capacitor;
 					\end{itemize}							
 				\end{frame}
 				
@@ -362,20 +362,27 @@
 		\subsection*{Exemplo}
 
 		\begin{frame}[t]
-			\frametitle{Inicialização}
+			\frametitle{Inicialização e Atraso de Elmore}
 			\vspace{-0.25cm}
 			\begin{center}
 				\includegraphics[width=0.8\linewidth]{img/inicializacao1.pdf}
 			\end{center}
-			\vspace{0.25cm}
-			$C_{eff_0} = C_0 + C_1 + C_2 + C_3 + C_4 + C_5 + C_6 + C_7$ \\
-			$C_{eff_1} = C_1 + C_2 + C_3 + C_4 + C_5 + C_6 + C_7$ \\
-			$C_{eff_2} = C_2 + C_4 + C_7$ \\
-			$C_{eff_3} = C_3 + C_5 + C_6$ \\
-			$C_{eff_4} = C_4 + C_7$ \\
-			$C_{eff_5} = C_5$ \\
-			$C_{eff_6} = C_6$ \\
-			$C_{eff_7} = C_7$
+			\vspace{0.4cm}
+			\begin{columns}
+
+				\begin{column}{0.7\linewidth}
+					$C_{eff_0} = C_0 + C_1 + C_2 + C_3 + C_4 + C_5 + C_6 + C_7$ \\
+					$C_{eff_1} = C_1 + C_2 + C_3 + C_4 + C_5 + C_6 + C_7$ \\
+					\textbf{[...]}\\
+					$C_{eff_7} = C_7$
+				\end{column}
+				\begin{column}{0.3\linewidth}
+					$\tau_0 = 0$  \\
+					$\tau_1 = \tau_0 + R_1 \times C_{eff_1}$ \\
+					\textbf{[...]}\\
+					$\tau_7 = \tau_4 + R_7 \times C_{eff_7}$ 
+				\end{column}
+			\end{columns}
 		\end{frame}
 
 
@@ -482,10 +489,12 @@
 						}
 					\end{column}
 					\begin{column}{.6\linewidth}
-						\begin{itemize}
-							\item $K_7 \in [0, 1]$;
-							\item $\uparrow K_7 \downarrow$ Resistive Shielding.
-						\end{itemize}
+						\only<3>{
+							\begin{itemize}
+								\item $K \in [0, 1]$;
+								\item $\uparrow K \downarrow$ \textit{Resistive Shielding}.
+							\end{itemize}
+						}
 					\end{column}
 				\end{columns}
 			}
@@ -556,7 +565,7 @@
 %				}
 %			\end{algorithm}
 %		\end{frame}
-		\begin{frame}
+		\begin{frame}[t]
 			\frametitle{Exemplo}
 			\pgfdeclareimage[width=0.8\linewidth]{algoritmo1}{img/algoritmo1.pdf}
 			\pgfdeclareimage[width=0.8\linewidth]{algoritmo2}{img/algoritmo2.pdf}
@@ -577,6 +586,13 @@
 				\pgfuseimage{algoritmo7}<7>
 				\pgfuseimage{algoritmo8}<8>
 			\end{center}
+			
+			\only<8>
+			{
+				\begin{itemize}
+					\item \textbf{Folga negativa (\textit{negative slack}):} $0.1ps$.
+				\end{itemize}
+			}
 
 		\end{frame}
 	
@@ -592,16 +608,16 @@
 		
 		\begin{frame}[t]
 			\frametitle{Metodologia e Infraestrutura Experimental}
-			\begin{center}
+			%\begin{center}
 				\begin{itemize}
-					\item \textbf{Técnicas que foram comparadas ferramenta industrial:}	\\
+					\item \textbf{Técnicas que foram comparadas com ferramenta industrial:}	\\
 						\begin{itemize}
 							\item Capacitância concentrada \textbf{SEM} atraso de interconexões;
-							\item Capacitância efetiva \textbf{COM} atraso de interconexões \textbf{E} degradação do \textit{slew}.							
-							\item Capacitância concentrada \textbf{COM} atraso de Elmore para interconexões \textbf{E} degradação do \textit{slew};
+							\item Capacitância efetiva \textbf{COM} atraso de interconexões \textbf{E} degradação do \textit{slew};								\item Capacitância efetiva \textbf{COM} atraso de interconexões e \textbf{SEM} degradação do \textit{slew};
+							\item Capacitância concentrada \textbf{COM} atraso de Elmore para interconexões \textbf{E} degradação do \textit{slew}.
 							
 						\end{itemize} \pause
-					\item \textbf{Infraestrutura Experimental: } \\
+					\item \textbf{Infraestrutura Experimental (Competição do ISPD 2013): } \\
 						\begin{itemize}
 						\item 8 circuitos (608-982k portas lógicas): \\
 						\begin{itemize}
@@ -613,7 +629,7 @@
 					\end{itemize} 
 				\end{itemize}
 				
-			\end{center}
+			%\end{center}
 		\end{frame}			
 		
 		\subsection*{Experimentos}
@@ -636,7 +652,7 @@
 					\begin{itemize}
 						\item \textbf{0\%} de erro;
 						\item Ferramenta cerca de \textbf{50x mais rápida} nos 7 primeiros circuitos;
-						\item \textbf{6.19x mais rápida} no netcard.
+						\item \textbf{6.19x mais rápida} no $netcard$.
 					\end{itemize}
 				\end{column}
 			\end{columns}
@@ -813,7 +829,7 @@
 							\item Erro \textbf{baixo} para TNS nos 7 primeiros circuitos (\textbf{10.52\%});
 							\item Erro \textbf{baixo} para \textit{critical path} (\textbf{5.11\%});
 							\item Resultados pessimistas;
-							\item Cerca de \textbf{32x mais rápida};
+							\item Cerca de \textbf{32x mais rápida}.
 						\end{itemize}
 					\end{small}
 				\end{column}
@@ -825,38 +841,59 @@
 		
 	
 	\section{Conclusões}
-	
+	\subsection*{}
 		\begin{frame}[t]
 		\frametitle{Conclusões}
 			\begin{itemize}
-				\item Foram avaliados os impactos do atraso das interconexões e degradação dos \textit{slews} no contexto de uma ferramenta de análise de \textit{timing} estática;			
+				\item Foram avaliados os impactos das interconexões no contexto da análise de \textit{timing} estática utilizando uma infraestrutura experimental realista;			
 			
-				\item A desconsideração da degradação do \textit{slew} pode levar a uma estimativa muito otimista (mais de 40\% de erro);
+				\item Desconsideração da degradação do \textit{slew} $\to$ estimativa \textbf{muito otimista} ($\text{erro critical path} \approx 20\%$);
 				
-				\item Capacitância Efetiva $\to$ \textit{Resistive Shielding};
+				\item Capacitância efetiva $\to$ \textit{resistive shielding};
 				
-				\item A ferramenta implementada é otimista em relação ao \textit{PrimeTime} em \textbf{4.16\%} na média, com tempo de execução  cerca de \textbf{8x} menor;
+				\item $C_{eff} + Elmore(C_{eff}) + \text{degradação do slew} \to$ estimativa \textbf{otimista} ($\text{erro critical path} \approx \textbf{4.16\%}$) com \textit{runtime} \textbf{8x menor} que ferramenta industrial;
 				
-				\item $C_{eff} / C_{total} \approx 1$ nos circuitos da competição do ISPD 2013.
+				\item $C_{eff} / C_{total} \approx 1$ nos circuitos da competição do ISPD 2013;
 				
-				\item Abordagem de capacitância concentrada + Elmore + Degradação do \textit{slew} é \textbf{pessimista} em relação ao \textit{PrimeTime} em \textbf{5.11\%} na média, com tempo de execução cerca de \textbf{32x} menor.
+				\item $C_{total} + Elmore(C_{total}) + \text{degradação do slew} \to$ estimativa \textbf{pessimista}  ($\text{erro critical path} \approx \textbf{5.11\%}$) com \textit{runtime} \textbf{32x menor} que ferramenta industrial.
 			\end{itemize}
 		\end{frame}
-	
-%	\section{Trabalhos Futuros}
-%		
-%		\begin{frame}[t]
-%		\frametitle{Trabalhos Futuros}
-%			\begin{itemize}
-%				\item Investigação detalhada dos erros obtidos;
-%				
-%				\item Avaliação da técnica de STA em uma ferramenta de otimização (e.g., \textit{gate sizing});
-%				
-%				\item Utilização de circuitos e bibliotecas comerciais.
-%			\end{itemize}
-%		\end{frame}
 		
 	\section*{}
-	\frame{\titlepage}
+	\frame{
+	
+	
+		\only<1>
+		{
+			\titlepage
+		}
+		
+		\only<2>
+		{
+			\begin{columns}
+				\begin{column}{0.6\linewidth}
+					\includegraphics[width=\linewidth]{img/markov.png} 
+				\end{column}
+				\begin{column}{0.4\linewidth}
+					\includegraphics[width=\linewidth]{img/histo_vs_markov.pdf} 
+				\end{column}
+			\end{columns}
+		}
+		\only<3>
+		{
+			\frametitle{Trabalhos Futuros}
+			\begin{itemize}
+				\item Investigação detalhada dos erros obtidos;
+				
+				\item Avaliação da técnica de STA em uma ferramenta de otimização (e.g., \textit{gate sizing});
+				
+				\item Utilização de circuitos e bibliotecas comerciais.
+			\end{itemize}		
+		}
+	
+	
+	
+	}
+		
 	
 \end{document}
